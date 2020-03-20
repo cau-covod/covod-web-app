@@ -5,7 +5,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "storybook:start": "start-storybook -p 9009 -s public",
+    "storybook:build": "build-storybook -s public",
+    "lint": "eslint . --ext .{js,jsx,ts,tsx}",
+    "format": "prettier --write \"**/*.+(js|ts|tsx|json|scss|css|md|mdx|html)\""
   },
   "dependencies": {
     "@types/node": "^12.0.0",
@@ -16,14 +20,42 @@
     "typescript": "~3.7.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/addons": "^5.3.17",
+    "@storybook/preset-create-react-app": "^2.1.0",
+    "@storybook/react": "^5.3.17",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
     "react-scripts": "3.4.0"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md,mdx,html}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint -- --fix",
+      "npm run test -- --watchAll false --bail --findRelatedTests"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.(ts|tsx|js|jsx)",
+      "!**/*.stories.*"
+    ]
   },
   "browserslist": {
     "production": [
