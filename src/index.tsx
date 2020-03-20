@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { config } from './services/covod-api';
+import { getConfig } from './app-config';
+
+const settings = getConfig();
+
+config.init({
+  baseUrl: settings.baseApiUrl,
+  clientId: settings.clientId
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

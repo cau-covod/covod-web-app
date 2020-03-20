@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "npm run test -- --watchAll false --coverage",
     "storybook:start": "start-storybook -p 9009 -s public",
     "storybook:build": "build-storybook -s public",
     "lint": "eslint . --ext .{js,jsx,ts,tsx}",
@@ -32,7 +34,8 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "source-map-explorer": "^2.4.0"
   },
   "eslintConfig": {
     "extends": "react-app"
