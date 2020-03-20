@@ -1,5 +1,5 @@
 :root {
-    --backgroundColor: #102A43;
-    --primaryColor: #0B69A3;
-    --neutralColor: #9FB3C8;
-  }
+  --backgroundColor: #102a43;
+  --primaryColor: rgb(9, 85, 133);
+  --neutralColor: #9fb3c8;
+}

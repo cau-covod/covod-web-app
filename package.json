@@ -37,7 +37,8 @@
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
     "react-scripts": "3.4.0",
-    "source-map-explorer": "^2.4.0"
+    "source-map-explorer": "^2.4.0",
+    "themeprovider-storybook": "^1.4.0"
   },
   "eslintConfig": {
     "extends": "react-app"
