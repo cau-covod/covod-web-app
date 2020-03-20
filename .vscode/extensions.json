@@ -7,7 +7,8 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
-    "mikestead.dotenv"
+    "mikestead.dotenv",
+    "jpoissonnier.vscode-styled-components"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []

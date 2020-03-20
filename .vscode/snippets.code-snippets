@@ -1,0 +1,8 @@
+{
+  "Theme shortcut": {
+    "prefix": "theme",
+    "scope": "css",
+    "body": "${({ theme }) => theme.$0};",
+    "description": "Inserts a get from theme function."
+  }
+}
