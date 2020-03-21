@@ -98,6 +98,25 @@ class ApiController {
     };
   }
 
+  public async postFormDataNoToken<T>(
+    endpoint: string,
+    data: FormData
+  ): Promise<ApiResponse<T>> {
+    const result = await fetch(this.config.baseUrl + endpoint, {
+      method: 'POST',
+      mode: 'cors',
+      redirect: 'error',
+      body: data
+    });
+
+    return {
+      ok: result.ok,
+      status: result.status,
+      statusText: result.statusText,
+      data: result.ok ? await result.json() : null
+    };
+  }
+
   public async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
     const result = await fetch(this.config.baseUrl + endpoint, {
       method: 'DELETE',
