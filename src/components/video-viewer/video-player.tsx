@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import styled from 'styled-components';
 
 interface VideoPlayerProps {
   sourceUrl: string;
@@ -22,7 +23,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }, [timestamp]);
 
   return (
-    <video
+    <Video
       ref={player}
       controls
       controlsList="nodownload"
@@ -31,8 +32,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     >
       <source src={`${sourceUrl}`} type={sourceType} />
       Sorry, your browser doesn't support embedded videos.
-    </video>
+    </Video>
   );
 };
 
 export default VideoPlayer;
+
+const Video = styled.video`
+  width: 100%;
+`;

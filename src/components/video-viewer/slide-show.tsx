@@ -54,5 +54,5 @@ const TransparentButton = styled.button`
 `;
 
 const SlideImage = styled.img`
-  max-height: 200px;
+  max-height: 150px;
 `;
