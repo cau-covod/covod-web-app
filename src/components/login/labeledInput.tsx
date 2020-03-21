@@ -1,18 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import BigInput from './bigInput'
+import BigInput from '../general/bigInput'
+import Label from '../general/label'
 
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const Label = styled.label`
-ont-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 8px 8px 4px 4px;
-  color: ${({ theme }) => theme.colors.primary};
 `
 
 export default function LabeledInput(props) {
@@ -23,5 +16,3 @@ export default function LabeledInput(props) {
     </Flex>
   )
 }
-
-// export default LabeledInput

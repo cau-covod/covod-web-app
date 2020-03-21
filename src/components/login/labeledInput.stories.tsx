@@ -2,7 +2,7 @@ import React from 'react';
 import LabeledInput from './labeledInput';
 
 export default {
-  title: 'General/LabeledInput',
+  title: 'Login/LabeledInput',
   component: LabeledInput
 };
 
