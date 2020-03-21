@@ -1,7 +1,9 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import AuthenticatedApp from './authenticated-app';
+import UnAuthenticatedApp from './unauthenticated-app';
 import { defaultTheme } from './theme/default-theme';
+import { useAuth } from './provider/authentication-provider';
 
 const GlobalStyles = createGlobalStyle`
 html {
@@ -27,11 +29,12 @@ body {
 `;
 
 function App() {
+  const { token } = useAuth();
   return (
     <ThemeProvider theme={defaultTheme}>
       <>
         <GlobalStyles />
-        <AuthenticatedApp />
+        {token !== null ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
       </>
     </ThemeProvider>
   );
