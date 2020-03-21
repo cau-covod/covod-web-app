@@ -9,7 +9,8 @@ const settings = getConfig();
 
 config.init({
   baseUrl: settings.baseApiUrl,
-  clientId: settings.clientId
+  clientId: settings.clientId,
+  clientSecret: settings.clientSecret
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));
