@@ -28,24 +28,23 @@ const Comments: React.FC<CommentsProps> = props => {
 export default Comments;
 
 const CommentsContainer = styled.div`
-  display: block;
-  overflowy: scroll;
+  float: bottom;
 `;
 
 const CommentContainer = styled.div`
-  display: block;
-  margin-bottom: 12px;
+  margin-top: 12px;
 `;
 
 const ReplyContainer = styled.div`
-  margin-top: 12px;
   margin-left: 30px;
 `;
 
 const AuthorName = styled.u`
+  display: inline-block;
   font-family: 'Roboto';
 `;
 
 const Content = styled.p`
+  display: inline-block;
   font-family: 'Roboto';
 `;
