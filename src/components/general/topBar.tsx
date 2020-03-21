@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import Card from './card'
 import H1 from './H1'
+import Span from './span'
 import { findByLabelText } from '@testing-library/react';
 
 const Flex = styled.div`
@@ -19,12 +20,12 @@ export default function TopBar(props) {
           <H1>CoVoD</H1>
         </Flex>
         <Flex>
-          <p>
+          <H1>
             {props.location}
-          </p>
+          </H1>
         </Flex>
         <Flex>
-          <p>{props.user}</p>
+          <H1>{props.user}</H1>
         </Flex>
       </div>
     </Card>
