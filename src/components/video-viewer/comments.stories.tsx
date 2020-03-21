@@ -8,6 +8,8 @@ export default {
   component: Comments
 };
 
-export const Default = () => (
-  <Comments comments={buildList(commentBuilder, 2, 10)} />
-);
+export const Default = () => {
+  var x = buildList(commentBuilder, 2, 10);
+  console.log(x);
+  return <Comments comments={x} />;
+};

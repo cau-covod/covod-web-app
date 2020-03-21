@@ -9,23 +9,37 @@ interface CommentsProps {
 
 const Comments: React.FC<CommentsProps> = props => {
   return (
-    <Container>
+    <CommentsContainer>
       {props.comments.map(commie => (
-        <Card>
-          <AuthorName>{commie.authorName}</AuthorName>
-          <Content>{commie.content}</Content>
-        </Card>
+        <CommentContainer>
+          <Card>
+            <AuthorName>{commie.authorName}</AuthorName>
+            <Content>{commie.content}</Content>
+          </Card>
+          <ReplyContainer>
+            {<Comments comments={commie.replies}></Comments>}
+          </ReplyContainer>
+        </CommentContainer>
       ))}
-    </Container>
+    </CommentsContainer>
   );
 };
 
 export default Comments;
 
-const Container = styled.div`
+const CommentsContainer = styled.div`
   display: block;
   overflowy: scroll;
-  margin: 0 24px;
+`;
+
+const CommentContainer = styled.div`
+  display: block;
+  margin-bottom: 12px;
+`;
+
+const ReplyContainer = styled.div`
+  margin-top: 12px;
+  margin-left: 30px;
 `;
 
 const AuthorName = styled.u`
