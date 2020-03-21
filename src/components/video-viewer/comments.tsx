@@ -23,7 +23,7 @@ const Comments: React.FC<CommentsProps> = props => {
 export default Comments;
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
+  display: block;
+  overflowy: scroll;
   margin: 0 24px;
 `;
