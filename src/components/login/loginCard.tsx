@@ -28,7 +28,7 @@ export default function LoginCard(props) {
         <LabeledInput label="Email" />
         <LabeledInput label="Password" />
         <CenteringContainer>
-          <Button>Sign in!</Button>
+          <Button onClick={props.onConfirm}>Sign in!</Button>
         </CenteringContainer>
       </Innercard>
     </Card>

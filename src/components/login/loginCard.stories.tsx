@@ -6,4 +6,4 @@ export default {
   component: LoginCard
 };
 
-export const Default = () => <LoginCard/>;
+export const Default = () => <LoginCard onConfirm={() => alert(1)}/>;
