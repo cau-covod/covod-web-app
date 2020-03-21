@@ -3,12 +3,6 @@ import styled from 'styled-components'
 import Card from '../general/card'
 import H1 from '../general/H1'
 
-const Innercard = styled.div`
-display: flex;
-flex-direction: column;
-padding: 20px 40px;
-`
-
 const CenteringRowContainer = styled.div`
 display:flex;
 flex-direction:row;
@@ -32,11 +26,6 @@ width:100%;
 `
 // TODO: I want width=parent, not 100%
 
-const SimpleDiv = styled.div`
-display:flex;
-direction:column;
-`
-
 export default function FeedEntry(props) {
   return (
     <Card>
@@ -54,7 +43,7 @@ export default function FeedEntry(props) {
       <CenteringColContainer>
         <CenteringRowContainer>
           <a href={props.videoPage}>
-            <img src={props.thumbnail} height="200px" />
+            <img src={props.thumbnail} alt="thumbnail" height="200px" />
           </a>
         </CenteringRowContainer>
         <LeftRightContainer>
