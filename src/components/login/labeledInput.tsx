@@ -12,7 +12,7 @@ export default function LabeledInput(props) {
   return (
     <Flex>
       <Label>{props.label}</Label>
-      <BigInput />
+      <BigInput type={props.type}/>
     </Flex>
   )
 }
