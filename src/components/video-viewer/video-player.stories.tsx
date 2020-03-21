@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import VideoPlayer from './video-player';
 
 export default {
-  title: 'VideoPlayer/VideoPlayer',
+  title: 'VideoViewer/VideoPlayer',
   component: VideoPlayer
 };
 
