@@ -100,19 +100,20 @@ class ApiController {
 
   public async postNoToken<T>(
     endpoint: string,
-    data: object
+    data: FormData
   ): Promise<ApiResponse<T>> {
     const result = await fetch(this.config.baseUrl + endpoint, {
       method: 'POST',
       mode: 'cors',
-      redirect: 'error',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: Object.entries(data).reduce(
-        (prev, curr) => `${prev}&${curr[0]}=${curr[1]}`,
-        ''
-      )
+      redirect: 'follow',
+      // headers: {
+      //   'Content-Type': 'multipart/form-data'
+      // },
+      body: data
+      // body: Object.entries(data).reduce(
+      //   (prev, curr) => `${prev}&${curr[0]}=${curr[1]}`,
+      //   ''
+      // )
     });
 
     return {
