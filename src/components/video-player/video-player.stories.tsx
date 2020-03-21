@@ -9,7 +9,7 @@ export default {
 export const Default = () => (
   <VideoPlayer
     sourceType="video/mp4"
-    sourceUrl="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
-    timestamp={30}
+    sourceUrl="https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4"
+    timestamp={0}
   />
 );
