@@ -12,8 +12,8 @@ const Comments: React.FC<CommentsProps> = props => {
     <Container>
       {props.comments.map(commie => (
         <Card>
-          <u>{commie.authorName}</u>
-          <p>{commie.content}</p>
+          <AuthorName>{commie.authorName}</AuthorName>
+          <Content>{commie.content}</Content>
         </Card>
       ))}
     </Container>
@@ -26,4 +26,12 @@ const Container = styled.div`
   display: block;
   overflowy: scroll;
   margin: 0 24px;
+`;
+
+const AuthorName = styled.u`
+  font-family: 'Roboto';
+`;
+
+const Content = styled.p`
+  font-family: 'Roboto';
 `;

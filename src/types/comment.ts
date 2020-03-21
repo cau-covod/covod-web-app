@@ -4,5 +4,5 @@ export interface Comment {
   authorId: string;
   authorName: string;
   content: string;
-  subComments: Comment[];
+  replies: Comment[];
 }

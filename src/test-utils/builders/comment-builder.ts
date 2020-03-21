@@ -8,6 +8,6 @@ export const commentBuilder: Builder<Comment> = overrides => ({
   authorId: id(),
   authorName: 'Hans Peter',
   content: 'You are fake news!',
-  subComments: [],
+  replies: [],
   ...overrides
 });
