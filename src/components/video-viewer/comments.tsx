@@ -65,14 +65,17 @@ const AuthorName = styled.u`
 
 const Content = styled.p`
   display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
 const Timestamp = styled.p`
-  position: absolute;
-  right: 20px;
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
