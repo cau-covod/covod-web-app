@@ -89,7 +89,7 @@ class LoginCard extends React.Component<LoginCardProps, State> {
           </CenteringContainer>
 
           <Flex>
-            <Label htmlFor="name">Username</Label>
+            <Label htmlFor="name">Username/Email</Label>
             <BigInput
               id="name"
               value={this.state.name}

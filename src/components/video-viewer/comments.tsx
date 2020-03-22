@@ -40,15 +40,15 @@ const Comments: React.FC<CommentsProps> = props => {
             </div>
             <Content>{commie.text}</Content>
             <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-              <Button onClick={()=>alert("I'm not implemented yet :/")} style={{padding: "4px 8px", fontSize:"16px"}}>↵</Button>
+              <Button onClick={() => alert("I'm not implemented yet :/")} style={{ padding: "4px 8px", fontSize: "16px" }}>↵</Button>
             </div>
           </LightBlueCard>
-        <ReplyContainer>
-          {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
-        </ReplyContainer>
+          <ReplyContainer>
+            {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
+          </ReplyContainer>
         </CommentContainer>
-  ))
-}
+      ))
+      }
     </CommentsContainer >
   );
 };

@@ -5,7 +5,7 @@ type CommentWrap = { comments: Comment[] };
 
 export class Lecture extends ApiComponent {
   getLectureVideoUrl(id: string): string {
-    return `${this.config.baseUrl}/api/v1/${id}/media`;
+    return `${this.config.baseUrl}/api/v1/lecture/${id}/media`;
   }
 
   async getAllCommentsForLecture(id: string): Promise<Comment[]> {

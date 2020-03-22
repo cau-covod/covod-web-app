@@ -26,4 +26,3 @@ release:
     - docker push $RELEASE_IMAGE
   only:
     - master
-  trigger: cau-vs-virus/covod-web-app
