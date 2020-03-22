@@ -93,7 +93,7 @@ class LoginCard extends React.Component<LoginCardProps, State> {
             <BigInput
               id="name"
               value={this.state.name}
-              type="name"
+              type="text"
               onChange={evt => this.updateEmail(evt)}
             />
           </Flex>
