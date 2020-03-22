@@ -7,7 +7,6 @@ import { BlueCard } from '../general/card';
 
 interface VideoViewerProps {
   videoUrl: string;
-  videoType: string;
   slides: Slide[];
 }
 
@@ -18,13 +17,9 @@ const VideoViewer: React.FC<VideoViewerProps> = props => {
     <Container>
       <Content>
         <BlueCard>
-        <VideoPlayer
-          sourceUrl={props.videoUrl}
-          sourceType={props.videoType}
-          timestamp={timestamp}
-        />
-        <div style={{height:"8px"}}/>
-        <SlideShow slides={props.slides} onSlideSelect={setTimestamp} />
+          <VideoPlayer sourceUrl={props.videoUrl} timestamp={timestamp} />
+          <div style={{ height: '8px' }} />
+          <SlideShow slides={props.slides} onSlideSelect={setTimestamp} />
         </BlueCard>
       </Content>
     </Container>

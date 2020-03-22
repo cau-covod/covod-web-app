@@ -3,24 +3,23 @@ import Topbar from '../components/general/topBar';
 import SmartVideoViewer from '../components/video-viewer';
 import styled from 'styled-components';
 import { useUserInfo } from '../provider/authentication-provider';
-import ScrollingCommentSection from '../components/video-viewer/comments'
-import Card, { BlueCard } from '../components/general/card'
-import Background from '../components/general/background'
+import ScrollingCommentSection from '../components/video-viewer/comments';
+import { BlueCard } from '../components/general/card';
+import Background from '../components/general/background';
 
 import { buildList } from '../test-utils/builders/list-builder';
 import { commentBuilder } from '../test-utils/builders/comment-builder';
-
 
 interface LectureScreenProps {
   lectureId: string;
 }
 
 const RowFlex = styled.div`
-display: flex;
-direction: row;
-justify-content:center;
-max-height: 75vh;
-`
+  display: flex;
+  direction: row;
+  justify-content: center;
+  max-height: 75vh;
+`;
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
   const { username } = useUserInfo();
@@ -31,10 +30,10 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
       <Container>
         <Topbar location="Lecture" user={username} />
         <RowFlex>
-          <div style={{ height: "100%" }}>
+          <div style={{ height: '100%' }}>
             <SmartVideoViewer videoId={lectureId} />
           </div>
-          <BlueCard style={{ minWidth: "300px" }}>
+          <BlueCard style={{ minWidth: '300px' }}>
             <ScrollingCommentSection comments={x} />
           </BlueCard>
         </RowFlex>
