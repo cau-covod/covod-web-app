@@ -1,5 +1,7 @@
 import React from 'react';
 import Topbar from '../components/general/topBar';
+import SmartVideoViewer from '../components/video-viewer';
+import styled from 'styled-components';
 
 interface LectureScreenProps {
   lectureId: string;
@@ -7,11 +9,21 @@ interface LectureScreenProps {
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
   return (
-    <>
+    <Container>
       <Topbar location="Lecture" user="Christoph" />
-      <h1>Lecture Screen</h1>
-    </>
+      <SmartVideoViewer videoId={lectureId} />
+    </Container>
   );
 };
 
 export default LectureScreen;
+
+const Container = styled.div`
+  & > * {
+    margin-bottom: 16px;
+  }
+
+  &:last-child {
+    margin-bottom: initial;
+  }
+`;
