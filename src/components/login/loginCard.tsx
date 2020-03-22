@@ -4,6 +4,9 @@ import LabeledInput from './labeledInput';
 import Card from '../general/card';
 import Button from '../general/button';
 import H1 from '../general/H1';
+import logo from '../../sourceimages/covodLogo.png';
+import Label from '../general/label'
+import BigInput from '../general/bigInput'
 
 const Innercard = styled.div`
   display: flex;
@@ -18,25 +21,75 @@ const CenteringContainer = styled.div`
   justify-content: center;
 `;
 
-interface LoginCardProps {
-  onConfirm: () => void;
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+interface State {
+  email: string;
+  password: string;
 }
 
-const LoginCard: React.FC<LoginCardProps> = props => {
-  return (
-    <Card>
-      <Innercard>
-        <CenteringContainer>
-          <H1>CoVoD</H1>
-        </CenteringContainer>
-        <LabeledInput label="Email" type="email" />
-        <LabeledInput label="Password" type="password" />
-        <CenteringContainer>
-          <Button onClick={props.onConfirm}>Sign in!</Button>
-        </CenteringContainer>
-      </Innercard>
-    </Card>
-  );
-};
+interface LoginCardProps {
+  onConfirm?: (username: string, password: string) => void;
+}
+
+class LoginCard extends React.Component<LoginCardProps, State> {
+  constructor(props: LoginCardProps) {
+    super(props)
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  updatePassword(evt: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({
+      email: this.state.email,
+      password: evt.target.value
+    })
+  }
+
+  updateEmail(evt: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({
+      email: evt.target.value,
+      password: this.state.password
+    })
+  }
+
+  clickConfirm(username: string, password: string) {
+    if (this.props.onConfirm != null)
+      this.props.onConfirm(username, password)
+  }
+
+  render() {
+    return (
+      <Card>
+        <Innercard>
+          <CenteringContainer>
+            <img src={logo} width="50" height="50" alt="Logo" />
+            <H1>CoVoD</H1>
+          </CenteringContainer>
+
+          <Flex>
+            <Label>Email</Label>
+            <BigInput value={this.state.email} type="email" onChange={evt => this.updateEmail(evt)} />
+          </Flex>
+          <Flex>
+            <Label>Password</Label>
+            <BigInput value={this.state.password} type="password" onChange={evt => this.updatePassword(evt)} />
+          </Flex>
+
+          <CenteringContainer>
+            <Button onClick={() => this.clickConfirm(this.state.email, this.state.password)}>Sign in!</Button>
+          </CenteringContainer>
+        </Innercard>
+      </Card>
+    );
+  };
+}
+
+
 
 export default LoginCard;
