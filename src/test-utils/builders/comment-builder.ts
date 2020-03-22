@@ -5,7 +5,7 @@ import { buildList } from '../../test-utils/builders/list-builder';
 
 export const commentBuilder: Builder<Comment> = overrides => ({
   id: id(),
-  timestamp: 1584892542509 - faker.random.number({ min: 0, max: 1000 }),
+  timestamp: faker.random.number({ min: 0, max: 100 }),
   authorId: id(),
   authorName: `${faker.name.firstName()} ${faker.name.lastName()}`,
   content: faker.lorem.sentence(),

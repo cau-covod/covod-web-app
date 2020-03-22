@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
+import { getTimeString } from '../../utils/sec-to-min';
 
 interface CommentsProps {
   comments: Comment[];
@@ -25,7 +26,7 @@ const Comments: React.FC<CommentsProps> = props => {
           <LightBlueCard>
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
               <AuthorName>{commie.authorName}</AuthorName>
-              <Timestamp>{commie.timestamp}</Timestamp>
+              <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
             </div>
           <Content>{commie.content}</Content>
           </LightBlueCard>
