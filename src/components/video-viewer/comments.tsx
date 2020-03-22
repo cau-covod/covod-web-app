@@ -24,19 +24,24 @@ const Comments: React.FC<CommentsProps> = props => {
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
           <LightBlueCard>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
               <AuthorName>{commie.authorName}</AuthorName>
               <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
             </div>
-          <Content>{commie.content}</Content>
+            <Content>{commie.content}</Content>
           </LightBlueCard>
-        <ReplyContainer>
-          {<Comments comments={commie.replies}></Comments>}
-        </ReplyContainer>
+          <ReplyContainer>
+            {<Comments comments={commie.replies}></Comments>}
+          </ReplyContainer>
         </CommentContainer>
-  ))
-}
-    </CommentsContainer >
+      ))}
+    </CommentsContainer>
   );
 };
 
