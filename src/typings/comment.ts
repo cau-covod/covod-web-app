@@ -1,7 +1,7 @@
 export interface Comment {
-  id: string;
+  id: number;
   timestamp: number;
-  authorId: string;
+  authorId: number;
   authorName: string;
   content: string;
   replies: Comment[];

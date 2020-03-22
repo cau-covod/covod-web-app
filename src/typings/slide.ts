@@ -1,5 +1,5 @@
 export interface Slide {
-  id: string;
+  id: number;
   timestamp: number;
   imageUrl: string;
 }

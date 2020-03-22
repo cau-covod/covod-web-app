@@ -1,19 +1,20 @@
 export interface Lecture {
   id: number;
-  number: string;
-  pub_time: string | null;
-  name: string;
+  number: number;
+  created_at: string;
+  description: string;
+  comment_count: number;
+  media: {
+    length: number;
+    thumbnail: string;
+  };
 }
 
 export interface Course {
   id: number;
   name: string;
+  description: string;
+  lectures: Lecture[];
 }
 
-export interface Feed {
-  feed: [
-    {
-      courses: [{}];
-    }
-  ];
-}
+type FeedDTO = [{ courses: Course[] }];

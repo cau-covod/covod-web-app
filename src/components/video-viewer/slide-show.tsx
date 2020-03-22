@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Slide } from '../../typings/slide';
-
-function getTimeString(timestamp: number) {
-  const min = Math.floor(timestamp / 60);
-  const sec = timestamp % 60;
-
-  return `${min}:${sec}`;
-}
+import { getTimeString } from '../../utils/sec-to-min';
 
 interface SlideShowProps {
   slides: Slide[];

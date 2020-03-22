@@ -13,5 +13,5 @@ export interface Builder<T> {
  * Returns a random uuid or an override if present.
  * @param override Possible override to return instead
  */
-export const id: Builder<string> = override =>
-  override ? override : faker.random.uuid();
+export const id: Builder<number> = override =>
+  override ? override : faker.random.number();
