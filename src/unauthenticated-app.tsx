@@ -6,9 +6,8 @@ const UnAuthenticatedApp: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" exact>
-          <LoginScreen redirectUri="/" />
-        </Route>
+        {/* Always render a login screen after login a token will be present and
+        this component will unmount. */}
         <Route>
           <LoginScreen />
         </Route>

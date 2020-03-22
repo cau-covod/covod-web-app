@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '../provider/authentication-provider';
-import { Redirect } from 'react-router-dom';
 
-interface LoginScreenProps {
-  redirectUri?: string;
-}
-
-const LoginScreen: React.FC<LoginScreenProps> = ({ redirectUri }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const LoginScreen: React.FC = () => {
   const { login } = useAuth();
 
   useEffect(() => {
-    login('test', 'passwort').then(ok => setIsLoggedIn(ok));
+    login('test', 'passwort');
   }, [login]);
-
-  if (isLoggedIn) return <Redirect to={redirectUri ? redirectUri : '/'} />;
 
   return <h1>Login</h1>;
 };
