@@ -2,7 +2,7 @@ import faker from 'faker';
 import { Builder, id } from './common';
 import { Slide } from '../../types/slide';
 
-export const slideBuilder: Builder<Slide> = overrides => ({
+export const buildSlide: Builder<Slide> = overrides => ({
   id: id(),
   imageUrl: faker.image.business(),
   timestamp: faker.random.number({ min: 0, max: 1000 }),
