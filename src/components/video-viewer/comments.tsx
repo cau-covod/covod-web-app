@@ -80,8 +80,6 @@ const Content = styled.p`
 `;
 
 const Timestamp = styled.p`
-  /* position: absolute; */
-  /* right: 20px; */
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
