@@ -23,7 +23,7 @@ const Container = styled.div`
     margin-bottom: 16px;
   }
 
-  &:last-child {
+  & > :last-child {
     margin-bottom: initial;
   }
 `;

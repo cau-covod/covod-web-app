@@ -40,7 +40,7 @@ const SlideContainer = styled.div`
     margin-right: 4px;
   }
 
-  &:last-child {
+  & > :last-child {
     margin-right: 0;
   }
 `;
