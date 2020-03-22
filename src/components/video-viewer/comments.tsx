@@ -38,6 +38,7 @@ export default ScrollingCommentSection;
 const AllContainer = styled.div`
   overflow-y: scroll;
   border:10px;
+  height:100%;
 `
 
 const CommentsContainer = styled.div`

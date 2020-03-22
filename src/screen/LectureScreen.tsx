@@ -31,8 +31,10 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
       <Container>
         <Topbar location="Lecture" user={username} />
         <RowFlex>
-          <SmartVideoViewer videoId={lectureId} />
-          <BlueCard style={{ minWidth: "300px"}}>
+          <div style={{ height: "100%" }}>
+            <SmartVideoViewer videoId={lectureId} />
+          </div>
+          <BlueCard style={{ minWidth: "300px" }}>
             <ScrollingCommentSection comments={x} />
           </BlueCard>
         </RowFlex>
