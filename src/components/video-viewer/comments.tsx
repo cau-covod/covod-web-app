@@ -7,29 +7,41 @@ interface CommentsProps {
   comments: Comment[];
 }
 
+const ScrollingCommentSection: React.FC<CommentsProps> = props => {
+  return(
+    <AllContainer>
+      <Comments comments={props.comments}/>
+    </AllContainer>
+  )
+}
+
 const Comments: React.FC<CommentsProps> = props => {
   return (
-    <CommentsContainer>
-      {props.comments.map(commie => (
-        <CommentContainer>
-          <Card>
-            <AuthorName>{commie.authorName}</AuthorName>
-            <Content>{commie.content}</Content>
-          </Card>
-          <ReplyContainer>
-            {<Comments comments={commie.replies}></Comments>}
-          </ReplyContainer>
-        </CommentContainer>
-      ))}
-    </CommentsContainer>
+      <CommentsContainer>
+        {props.comments.map(commie => (
+          <CommentContainer>
+            <Card>
+              <AuthorName>{commie.authorName}</AuthorName>
+              <Content>{commie.content}</Content>
+            </Card>
+            <ReplyContainer>
+              {<Comments comments={commie.replies}></Comments>}
+            </ReplyContainer>
+          </CommentContainer>
+        ))}
+      </CommentsContainer>
   );
 };
 
-export default Comments;
+export default ScrollingCommentSection;
+
+const AllContainer = styled.div`
+  overflow-y: scroll;
+  border:10px;
+`
 
 const CommentsContainer = styled.div`
   float: bottom;
-  overflow-y: auto
 `;
 
 const CommentContainer = styled.div`

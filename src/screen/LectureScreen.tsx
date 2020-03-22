@@ -3,7 +3,7 @@ import Topbar from '../components/general/topBar';
 import SmartVideoViewer from '../components/video-viewer';
 import styled from 'styled-components';
 import { useUserInfo } from '../provider/authentication-provider';
-import Comments from '../components/video-viewer/comments'
+import ScrollingCommentSection from '../components/video-viewer/comments'
 import Card, { BlueCard } from '../components/general/card'
 import Background from '../components/general/background'
 
@@ -19,6 +19,7 @@ const RowFlex = styled.div`
 display: flex;
 direction: row;
 justify-content:center;
+max-height: 75vh;
 `
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
@@ -31,8 +32,8 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
         <Topbar location="Lecture" user={username} />
         <RowFlex>
           <SmartVideoViewer videoId={lectureId} />
-          <BlueCard style={{ minWidth: "300px" }}>
-            <Comments comments={x} />
+          <BlueCard style={{ minWidth: "300px"}}>
+            <ScrollingCommentSection comments={x} />
           </BlueCard>
         </RowFlex>
       </Container>
