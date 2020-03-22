@@ -18,7 +18,7 @@ interface TopbarProps {
 
 const Topbar: React.FC<TopbarProps> = props => {
   return (
-    <Card>
+    <Card style={{borderTopLeftRadius:"0", borderTopRightRadius:"0"}}>
       <div
         style={{
           display: 'flex',
