@@ -2,7 +2,7 @@ import React from 'react';
 import Topbar from '../components/general/topBar';
 import SmartVideoViewer from '../components/video-viewer';
 import styled from 'styled-components';
-import { useUserInfo } from '../provider/authentication-provider';
+import { useAuth } from '../provider/authentication-provider';
 import ScrollingCommentSection from '../components/video-viewer/comments';
 import { BlueCard } from '../components/general/card';
 import Background from '../components/general/background';
@@ -22,13 +22,13 @@ const RowFlex = styled.div`
 `;
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
-  const { username } = useUserInfo();
+  const { logout } = useAuth();
   var x = buildList(commentBuilder, 2, 10);
 
   return (
     <Background>
       <Container>
-        <Topbar location="Lecture" user={username} />
+        <Topbar location="Lecture" logout={logout} />
         <RowFlex>
           <div style={{ height: '100%' }}>
             <SmartVideoViewer videoId={lectureId} />
