@@ -1,5 +1,7 @@
 import ApiComponent from '../abstract-api-component';
 
-class Lecture extends ApiComponent {
-  async getLecture(id: string) {}
+export class Lecture extends ApiComponent {
+  getLectureVideoUrl(id: string): string {
+    return `${this.config.baseUrl}/api/v1/${id}/media`;
+  }
 }

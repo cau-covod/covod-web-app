@@ -3,16 +3,11 @@ import styled from 'styled-components';
 
 interface VideoPlayerProps {
   sourceUrl: string;
-  sourceType: string;
   /** Timestamp in second the player should jump to */
   timestamp?: number;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({
-  sourceUrl,
-  sourceType,
-  timestamp
-}) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ sourceUrl, timestamp }) => {
   const player = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -29,8 +24,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       controlsList="nodownload"
       disablePictureInPicture
       preload="auto"
+      src={sourceUrl}
     >
-      <source src={`${sourceUrl}`} type={sourceType} />
       Sorry, your browser doesn't support embedded videos.
     </Video>
   );

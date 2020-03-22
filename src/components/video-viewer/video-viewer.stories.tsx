@@ -11,7 +11,6 @@ export default {
 export const Default = () => (
   <VideoViewer
     slides={buildList(buildSlide, 20)}
-    videoType="video/mp4"
     videoUrl="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
   />
 );
