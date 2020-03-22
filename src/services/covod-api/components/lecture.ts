@@ -16,7 +16,6 @@ export class Lecture extends ApiComponent {
     if (!res.ok || !res.data)
       throw new Error('getAllCommentsForLecture was not ok.');
 
-    console.log(res.data.comments);
     return res.data.comments;
   }
 }
