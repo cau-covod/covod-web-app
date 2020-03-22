@@ -6,9 +6,7 @@ import { useAuth } from '../provider/authentication-provider';
 import ScrollingCommentSection from '../components/video-viewer/comments';
 import Card from '../components/general/card';
 import Background from '../components/general/background';
-
-import { buildList } from '../test-utils/builders/list-builder';
-import { commentBuilder } from '../test-utils/builders/comment-builder';
+import { useLectureComments } from '../provider/course-provider';
 
 interface LectureScreenProps {
   lectureId: string;
@@ -23,7 +21,7 @@ const RowFlex = styled.div`
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
   const { logout } = useAuth();
-  var x = buildList(commentBuilder, 2, 10);
+  const comments = useLectureComments(lectureId);
 
   return (
     <Background>
@@ -34,7 +32,7 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
             <SmartVideoViewer videoId={lectureId} />
           </div>
           <Card style={{ minWidth: '300px' }}>
-            <ScrollingCommentSection comments={x} />
+            <ScrollingCommentSection comments={comments} />
           </Card>
         </RowFlex>
       </Container>

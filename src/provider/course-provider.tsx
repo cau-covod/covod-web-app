@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Course } from '../typings/lecture';
-import { courses } from '../services/covod-api';
+import { courses, lecture } from '../services/covod-api';
+import { Comment } from '../typings/comment';
 
 // Let's keep this hook in the provider layer. This way we can cache the data
 // a global state without having to touch any components.
@@ -23,6 +24,16 @@ export function useCourses() {
   useEffect(() => {
     courses.getAllCourses().then(res => setData(sortLectures(res)));
   }, []);
+
+  return data;
+}
+
+export function useLectureComments(id: string) {
+  const [data, setData] = useState<Comment[]>([]);
+
+  useEffect(() => {
+    lecture.getAllCommentsForLecture(id).then(res => setData(res));
+  }, [id]);
 
   return data;
 }

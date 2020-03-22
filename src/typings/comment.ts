@@ -1,8 +1,14 @@
 export interface Comment {
   id: number;
   timestamp: number;
-  authorId: number;
-  authorName: string;
-  content: string;
+  created_at: string;
+  modified_at: string;
+  user: {
+    id: number;
+    username: string;
+    full_name: string;
+  };
+  text: string;
+  path: string;
   replies: Comment[];
 }
