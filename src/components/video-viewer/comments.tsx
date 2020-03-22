@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 import { getTimeString } from '../../utils/sec-to-min';
+import Button from '../general/button'
 
 interface CommentsProps {
   comments: Comment[];
@@ -33,18 +34,22 @@ const Comments: React.FC<CommentsProps> = props => {
               }}
             >
               <AuthorName>{commie.user.full_name}</AuthorName>
-            {props.isTopLevel&&
-              <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
+              {props.isTopLevel &&
+                <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
               }
             </div>
             <Content>{commie.text}</Content>
+            <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+              <Button onClick={()=>alert("I'm not implemented yet :/")} style={{padding: "4px 8px", fontSize:"16px"}}>↵</Button>
+            </div>
           </LightBlueCard>
-          <ReplyContainer>
-            {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
-          </ReplyContainer>
+        <ReplyContainer>
+          {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
+        </ReplyContainer>
         </CommentContainer>
-      ))}
-    </CommentsContainer>
+  ))
+}
+    </CommentsContainer >
   );
 };
 
@@ -84,7 +89,7 @@ const Content = styled.p`
   color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
-const Timestamp = styled.p`
+const Timestamp = styled.text`
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
