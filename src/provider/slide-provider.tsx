@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Slide } from '../types/slide';
+import { Slide } from '../typings/slide';
 import { buildList } from '../test-utils/builders/list-builder';
 import { buildSlide } from '../test-utils/builders/slide-builder';
 

@@ -1,9 +1,9 @@
-import ApiComponent from './abstract-api-component';
+import ApiComponent from '../abstract-api-component';
 
 interface TokenInfo {
   access_token: string;
   expires_in: number;
-  scope: 'upload';
+  scope: 'upload view comment';
   token_type: 'Bearer';
 }
 
@@ -15,7 +15,7 @@ export class OAuthHandler extends ApiComponent {
     formdata.append('username', username);
     formdata.append('password', password);
     formdata.append('client_secret', this.config.clientSecret);
-    formdata.append('scope', 'upload');
+    formdata.append('scope', 'upload view comment');
 
     const res = await this.api.postNoToken<TokenInfo>(
       '/oauth2/token',
