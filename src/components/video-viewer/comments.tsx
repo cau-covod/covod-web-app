@@ -74,6 +74,8 @@ const Content = styled.p`
   display: inline-block;
   font-family: 'Roboto';
   font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 0px;
   color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
