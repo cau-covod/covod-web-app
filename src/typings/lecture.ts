@@ -17,4 +17,4 @@ export interface Course {
   lectures: Lecture[];
 }
 
-type FeedDTO = [{ courses: Course[] }];
+export type FeedDTO = [{ courses: Course[] }];

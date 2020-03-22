@@ -39,7 +39,9 @@ function usePersistenceToken(): [
      * we will still develop this in 10 days...
      */
     console.info('[Auth] Token found in storage.');
-    setTokenInfo(JSON.parse(data));
+    const tokenInfo: TokenInfo = JSON.parse(data);
+    config.token = tokenInfo.access_token;
+    setTokenInfo(tokenInfo);
   }, []);
 
   const setInfo = useCallback((info: TokenInfo | null) => {
