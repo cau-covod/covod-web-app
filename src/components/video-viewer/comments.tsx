@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
+import { getTimeString } from '../../utils/sec-to-min';
 
 interface CommentsProps {
   comments: Comment[];
@@ -23,11 +24,17 @@ const Comments: React.FC<CommentsProps> = props => {
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
           <LightBlueCard>
-            <AuthorName>{commie.authorName}</AuthorName>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
+              <AuthorName>{commie.authorName}</AuthorName>
+              <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
+            </div>
             <Content>{commie.content}</Content>
-            <Timestamp>
-              {new Date(commie.timestamp).toLocaleDateString()}
-            </Timestamp>
           </LightBlueCard>
           <ReplyContainer>
             {<Comments comments={commie.replies}></Comments>}
@@ -69,13 +76,12 @@ const Content = styled.p`
   margin-bottom: 0px;
   font-family: 'Roboto';
   font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 0px;
   color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
 const Timestamp = styled.p`
-  float: right;
-  margin-top: 0px;
-  margin-bottom: 0px;
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
