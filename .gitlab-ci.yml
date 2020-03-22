@@ -1,14 +1,14 @@
 image: docker:latest
 stages:
   - build
+  - release
 
 variables:
-  TEST_IMAGE: git.bre4k3r.de:45678/cau-vs-virus/covod-web-app:$CI_COMMIT_REF_NAME
-  RELEASE_IMAGE: git.bre4k3r.de:45678/cau-vs-virus/covod-web-app:latest
-  API_BASE_URL: http://covod.bre4k3r.de:22022
+  TEST_IMAGE: 183321040270.dkr.ecr.eu-central-1.amazonaws.com/covod/covod-web-app:$CI_COMMIT_REF_NAME
+  RELEASE_IMAGE: 183321040270.dkr.ecr.eu-central-1.amazonaws.com/covod/covod-web-app:latest
 
 before_script:
-  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN git.bre4k3r.de:45678
+  - docker login -u AWS -p $REGISTRY_TOKEN 183321040270.dkr.ecr.eu-central-1.amazonaws.com/covod
 
 build:
   stage: build
