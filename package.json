@@ -10,7 +10,7 @@
     "test:coverage": "npm run test -- --watchAll false --coverage",
     "storybook:start": "start-storybook -p 9010 -s public",
     "storybook:build": "build-storybook -s public",
-    "lint": "eslint . --ext .{js,jsx,ts,tsx}",
+    "lint": "eslint ./ --ext .{js,jsx,ts,tsx}",
     "format": "prettier --write \"**/*.+(js|ts|tsx|json|scss|css|md|mdx|html)\""
   },
   "dependencies": {
