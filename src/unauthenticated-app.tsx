@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginScreen from './screen/LoginScreen';
 
 const UnAuthenticatedApp: React.FC = () => {
@@ -7,9 +7,11 @@ const UnAuthenticatedApp: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/login" exact>
+          <LoginScreen redirectUri="/" />
+        </Route>
+        <Route>
           <LoginScreen />
         </Route>
-        <Redirect to="/login" />
       </Switch>
     </BrowserRouter>
   );
