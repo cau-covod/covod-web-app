@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../general/card';
+import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 
 interface CommentsProps {
@@ -22,10 +22,10 @@ const Comments: React.FC<CommentsProps> = props => {
     <CommentsContainer>
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
-          <Card>
+          <LightBlueCard>
             <AuthorName>{commie.authorName}</AuthorName>
             <Content>{commie.content}</Content>
-          </Card>
+          </LightBlueCard>
           <ReplyContainer>
             {<Comments comments={commie.replies}></Comments>}
           </ReplyContainer>
@@ -56,9 +56,13 @@ const ReplyContainer = styled.div`
 const AuthorName = styled.u`
   display: inline-block;
   font-family: 'Roboto';
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
 const Content = styled.p`
   display: inline-block;
   font-family: 'Roboto';
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary[900]};
 `;

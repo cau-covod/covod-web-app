@@ -6,6 +6,13 @@ import { courses } from '../services/covod-api';
 // a global state without having to touch any components.
 // The hooks act as a fassade.
 
+function sortCourses(courses: Course[]) {
+  for (var c = 0; c < courses.length; c++) {
+    courses[c].lectures.sort((a, b) => (a.number > b.number ? 1 : -1));
+  }
+  return courses;
+}
+
 /**
  * Returns a list of courses
  */
@@ -14,7 +21,7 @@ export function useCourses() {
   const [data, setData] = useState<Course[]>([]);
 
   useEffect(() => {
-    courses.getAllCourses().then(res => setData(res));
+    courses.getAllCourses().then(res => setData(sortCourses(res)));
   }, []);
 
   return data;

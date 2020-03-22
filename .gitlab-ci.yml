@@ -8,7 +8,7 @@ variables:
   RELEASE_IMAGE: 183321040270.dkr.ecr.eu-central-1.amazonaws.com/covod-web-app:latest
 
 before_script:
-  - docker login -u AWS -p $REGISTRY_TOKEN 183321040270.dkr.ecr.eu-central-1.amazonaws.com/covod
+  - docker login -u AWS -p $REGISTRY_TOKEN 183321040270.dkr.ecr.eu-central-1.amazonaws.com
 
 build:
   stage: build
@@ -26,3 +26,5 @@ release:
     - docker push $RELEASE_IMAGE
   only:
     - master
+  trigger:
+    - cau-vs-virus/covod-web-app

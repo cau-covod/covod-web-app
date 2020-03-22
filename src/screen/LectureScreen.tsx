@@ -4,7 +4,7 @@ import SmartVideoViewer from '../components/video-viewer';
 import styled from 'styled-components';
 import { useAuth } from '../provider/authentication-provider';
 import ScrollingCommentSection from '../components/video-viewer/comments';
-import { BlueCard } from '../components/general/card';
+import Card from '../components/general/card';
 import Background from '../components/general/background';
 
 import { buildList } from '../test-utils/builders/list-builder';
@@ -33,9 +33,9 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
           <div style={{ height: '100%' }}>
             <SmartVideoViewer videoId={lectureId} />
           </div>
-          <BlueCard style={{ minWidth: '300px' }}>
+          <Card style={{ minWidth: '300px' }}>
             <ScrollingCommentSection comments={x} />
-          </BlueCard>
+          </Card>
         </RowFlex>
       </Container>
     </Background>
