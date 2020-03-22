@@ -89,7 +89,7 @@ const Content = styled.p`
   color: ${({ theme }) => theme.colors.primary[900]};
 `;
 
-const Timestamp = styled.text`
+const Timestamp = styled.b`
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
