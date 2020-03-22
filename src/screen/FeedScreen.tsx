@@ -25,6 +25,7 @@ const Container = styled.div`
   }
 
   & > :last-child {
-    margin: 0 24px;
+    max-width: 60%;
+    margin: 0 auto;
   }
 `;

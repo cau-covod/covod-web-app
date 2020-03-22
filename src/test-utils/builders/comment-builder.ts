@@ -7,11 +7,8 @@ export const commentBuilder: Builder<Comment> = overrides => ({
   id: id(),
   timestamp: faker.random.number({ min: 0, max: 1000 }),
   authorId: id(),
-  authorName: 'Hans Peter',
-  content:
-    faker.random.number({ min: 0, max: 1 }) === 1
-      ? 'No u!'
-      : 'You are fake news!',
+  authorName: `${faker.name.firstName()} ${faker.name.lastName()}`,
+  content: faker.lorem.sentence(),
   replies:
     faker.random.number({ min: 0, max: 100 }) < 20
       ? buildList(commentBuilder, 1, 5)

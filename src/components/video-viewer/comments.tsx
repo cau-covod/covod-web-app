@@ -21,7 +21,8 @@ const Comments: React.FC<CommentsProps> = props => {
   return (
     <CommentsContainer>
       {props.comments.map(commie => (
-        <CommentContainer>
+
+        <CommentContainer key={commie.id}>
           <LightBlueCard>
             <AuthorName>{commie.authorName}</AuthorName>
             <Content>{commie.content}</Content>
