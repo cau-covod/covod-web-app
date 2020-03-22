@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
 import { useAuth } from '../provider/authentication-provider';
 import LoginCard from '../components/login/loginCard';
 import styled from 'styled-components';
+import React from 'react'
 
 const LoginScreen: React.FC = () => {
   const { login } = useAuth();
