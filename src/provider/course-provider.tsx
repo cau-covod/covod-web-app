@@ -8,9 +8,9 @@ import { courses } from '../services/covod-api';
 
 function sortLectures(courses: Course[]) {
   for (var c = 0; c < courses.length; c++) {
-    courses[c].lectures.sort((a, b) => a.number > b.number ? 1 : -1)
+    courses[c].lectures.sort((a, b) => (a.number > b.number ? 1 : -1));
   }
-  return courses
+  return courses;
 }
 
 /**

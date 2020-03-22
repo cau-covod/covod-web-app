@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {LightBlueCard } from '../general/card';
+import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 
 interface CommentsProps {
@@ -21,11 +21,13 @@ const Comments: React.FC<CommentsProps> = props => {
   return (
     <CommentsContainer>
       {props.comments.map(commie => (
-
         <CommentContainer key={commie.id}>
           <LightBlueCard>
             <AuthorName>{commie.authorName}</AuthorName>
             <Content>{commie.content}</Content>
+            <Timestamp>
+              {new Date(commie.timestamp).toLocaleDateString()}
+            </Timestamp>
           </LightBlueCard>
           <ReplyContainer>
             {<Comments comments={commie.replies}></Comments>}
@@ -63,6 +65,14 @@ const AuthorName = styled.u`
 
 const Content = styled.p`
   display: inline-block;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary[900]};
+`;
+
+const Timestamp = styled.p`
+  position: absolute;
+  right: 20px;
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};

@@ -9,9 +9,9 @@ interface SmartVideoViewerProps {
 
 const SmartVideoViewer: React.FC<SmartVideoViewerProps> = props => {
   const slides = useSlides(props.videoId);
-  const [vidUrl, vidType] = useVideo(props.videoId);
+  const vidUrl = useVideo(props.videoId);
 
-  return <VideoViewer slides={slides} videoType={vidType} videoUrl={vidUrl} />;
+  return <VideoViewer slides={slides} videoUrl={vidUrl} />;
 };
 
 export default SmartVideoViewer;

@@ -1,16 +1,16 @@
 import React from 'react';
 import Topbar from '../components/general/topBar';
-import { useUserInfo } from '../provider/authentication-provider';
+import { useAuth } from '../provider/authentication-provider';
 import SmartFeed from '../components/feed';
 import styled from 'styled-components';
-import Background from '../components/general/background'
+import Background from '../components/general/background';
 
 const FeedScreen: React.FC = () => {
-  const { username } = useUserInfo();
+  const { logout } = useAuth();
   return (
     <Background>
       <Container>
-        <Topbar location="Feed" user={username} />
+        <Topbar location="Feed" logout={logout} />
         <SmartFeed />
       </Container>
     </Background>
