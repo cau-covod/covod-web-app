@@ -1,11 +1,5 @@
 import ApiComponent from '../abstract-api-component';
-
-interface TokenInfo {
-  access_token: string;
-  expires_in: number;
-  scope: 'upload view comment';
-  token_type: 'Bearer';
-}
+import { TokenInfo } from '../../../typings/token';
 
 export class OAuthHandler extends ApiComponent {
   public async getToken(username: string, password: string) {
