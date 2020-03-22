@@ -22,6 +22,7 @@ interface Colors {
     300: string;
     500: string;
     700: string;
+    900: string;
   };
   secondary: {
     300: string;

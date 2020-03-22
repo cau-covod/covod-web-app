@@ -13,12 +13,13 @@ const defaultTheme: DefaultTheme = {
     primary: {
       300: '#62B0E8',
       500: '#2680C2',
-      700: '#0F609B'
+      700: '#0F609B',
+      900: '#102A43'
     },
     secondary: {
       300: '#9FB3C8',
       500: '#627D98',
-      700: '#334E68'
+      700: '#334E68',
     },
     // Grays taken from Refactoring UI Color Swatch
     grays: {

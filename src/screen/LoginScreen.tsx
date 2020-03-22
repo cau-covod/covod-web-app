@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from '../provider/authentication-provider';
 import LoginCard from '../components/login/loginCard';
 import styled from 'styled-components';
+import Background from '../components/general/background'
 
 const LoginScreen: React.FC = () => {
   const { login } = useAuth();
@@ -15,11 +16,13 @@ const LoginScreen: React.FC = () => {
   `;
 
   return (
-    <CenterFlex>
-      <div style={{ width: '60%', maxWidth: '650px', height: '60%' }}>
-        <LoginCard onConfirm={login} />
-      </div>
-    </CenterFlex>
+    <Background>
+      <CenterFlex>
+        <div style={{ width: '60%', maxWidth: '650px', height: '60%' }}>
+          <LoginCard onConfirm={login} />
+        </div>
+      </CenterFlex>
+    </Background>
   );
 };
 
