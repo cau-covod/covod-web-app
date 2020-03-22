@@ -8,28 +8,28 @@ interface CommentsProps {
 }
 
 const ScrollingCommentSection: React.FC<CommentsProps> = props => {
-  return(
+  return (
     <AllContainer>
-      <Comments comments={props.comments}/>
+      <Comments comments={props.comments} />
     </AllContainer>
-  )
-}
+  );
+};
 
 const Comments: React.FC<CommentsProps> = props => {
   return (
-      <CommentsContainer>
-        {props.comments.map(commie => (
-          <CommentContainer>
-            <Card>
-              <AuthorName>{commie.authorName}</AuthorName>
-              <Content>{commie.content}</Content>
-            </Card>
-            <ReplyContainer>
-              {<Comments comments={commie.replies}></Comments>}
-            </ReplyContainer>
-          </CommentContainer>
-        ))}
-      </CommentsContainer>
+    <CommentsContainer>
+      {props.comments.map(commie => (
+        <CommentContainer key={commie.id}>
+          <Card>
+            <AuthorName>{commie.authorName}</AuthorName>
+            <Content>{commie.content}</Content>
+          </Card>
+          <ReplyContainer>
+            {<Comments comments={commie.replies}></Comments>}
+          </ReplyContainer>
+        </CommentContainer>
+      ))}
+    </CommentsContainer>
   );
 };
 
@@ -37,9 +37,9 @@ export default ScrollingCommentSection;
 
 const AllContainer = styled.div`
   overflow-y: scroll;
-  border:10px;
-  height:100%;
-`
+  border: 10px;
+  height: 100%;
+`;
 
 const CommentsContainer = styled.div`
   float: bottom;
