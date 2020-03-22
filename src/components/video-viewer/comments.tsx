@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card, { BlueCard, LightBlueCard } from '../general/card';
+import {LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 
 interface CommentsProps {

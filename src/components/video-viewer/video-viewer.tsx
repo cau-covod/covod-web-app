@@ -3,7 +3,7 @@ import VideoPlayer from './video-player';
 import SlideShow from './slide-show';
 import { Slide } from '../../typings/slide';
 import styled from 'styled-components';
-import Card, { BlueCard } from '../general/card';
+import Card from '../general/card';
 
 interface VideoViewerProps {
   videoUrl: string;
