@@ -15,6 +15,8 @@ const ScrollingCommentSection: React.FC<CommentsProps> = props => {
   );
 };
 
+export default ScrollingCommentSection;
+
 const Comments: React.FC<CommentsProps> = props => {
   return (
     <CommentsContainer>
@@ -32,8 +34,6 @@ const Comments: React.FC<CommentsProps> = props => {
     </CommentsContainer>
   );
 };
-
-export default ScrollingCommentSection;
 
 const AllContainer = styled.div`
   overflow-y: scroll;
