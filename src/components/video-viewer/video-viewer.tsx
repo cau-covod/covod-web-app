@@ -3,7 +3,7 @@ import VideoPlayer from './video-player';
 import SlideShow from './slide-show';
 import { Slide } from '../../typings/slide';
 import styled from 'styled-components';
-import { BlueCard } from '../general/card';
+import Card, { BlueCard } from '../general/card';
 
 interface VideoViewerProps {
   videoUrl: string;
@@ -17,15 +17,15 @@ const VideoViewer: React.FC<VideoViewerProps> = props => {
   return (
     <Container>
       <Content>
-        <BlueCard>
-        <VideoPlayer
-          sourceUrl={props.videoUrl}
-          sourceType={props.videoType}
-          timestamp={timestamp}
-        />
-        <div style={{height:"8px"}}/>
-        <SlideShow slides={props.slides} onSlideSelect={setTimestamp} />
-        </BlueCard>
+        <Card>
+          <VideoPlayer
+            sourceUrl={props.videoUrl}
+            sourceType={props.videoType}
+            timestamp={timestamp}
+          />
+          <div style={{ height: '8px' }} />
+          <SlideShow slides={props.slides} onSlideSelect={setTimestamp} />
+        </Card>
       </Content>
     </Container>
   );

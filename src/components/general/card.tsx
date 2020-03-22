@@ -19,4 +19,13 @@ export const BlueCard = styled.div`
   border-radius: 10px;
 `;
 
+export const LightBlueCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: ${({ theme }) => theme.colors.primary[300]};
+  box-shadow: ${({ theme }) => theme.shadows[100]};
+  padding: 8px 16px;
+  border-radius: 10px;
+`;
+
 export default Card;
