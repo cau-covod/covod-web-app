@@ -4,7 +4,7 @@ import { oauth, config } from '../services/covod-api';
 interface AuthenticationContext {
   token: string | null;
   username: string;
-  login: (username: string, password: string) => Promise<boolean>;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -16,17 +16,12 @@ const AuthenticationProvider: React.FC = ({ children }) => {
   const [token, setToken] = React.useState<string | null>(null);
   const [username, setUsername] = React.useState<string>('');
 
-  async function login(username: string, password: string): Promise<boolean> {
-    try {
-      const tokenInfo = await oauth.getToken(username, password);
+  async function login(username: string, password: string): Promise<void> {
+    const tokenInfo = await oauth.getToken(username, password);
 
-      config.token = tokenInfo.access_token;
-      setToken(tokenInfo.access_token);
-      setUsername(username);
-      return true;
-    } catch (e) {
-      return false;
-    }
+    config.token = tokenInfo.access_token;
+    setToken(tokenInfo.access_token);
+    setUsername(username);
   }
 
   function logout() {
@@ -42,7 +37,7 @@ const AuthenticationProvider: React.FC = ({ children }) => {
 
 function useAuth(): {
   token: string | null;
-  login: (username: string, password: string) => Promise<boolean>;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 } {
   const context = React.useContext(AuthenticationContext);

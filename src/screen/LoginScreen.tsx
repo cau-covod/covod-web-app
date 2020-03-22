@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuth } from '../provider/authentication-provider';
 import LoginCard from '../components/login/loginCard';
 import styled from 'styled-components';
@@ -14,20 +14,10 @@ const LoginScreen: React.FC = () => {
     align-items: center;
   `;
 
-  const Flex = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-  `;
-
   return (
     <CenterFlex>
-      <div style={{ width: '60%', maxWidth: "650px", height: '60%' }}>
-        <LoginCard
-          onConfirm={(username: string, password: string) =>
-            login(username, password)
-          }
-        />
+      <div style={{ width: '60%', maxWidth: '650px', height: '60%' }}>
+        <LoginCard onConfirm={login} />
       </div>
     </CenterFlex>
   );

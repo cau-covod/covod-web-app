@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import LabeledInput from './labeledInput';
 import Card from '../general/card';
 import Button from '../general/button';
 import H1 from '../general/H1';
 import logo from '../../sourceimages/covodLogo.png';
-import Label from '../general/label'
-import BigInput from '../general/bigInput'
+import Label from '../general/label';
+import BigInput from '../general/bigInput';
 
-const Innercard = styled.div`
+const InnerCard = styled.form`
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
@@ -26,70 +25,96 @@ const Flex = styled.div`
   flex-direction: column;
 `;
 
+const SpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+`;
+
+const ErrorMessage = styled.span`
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #ba2525;
+`;
+
 interface State {
-  email: string;
+  name: string;
   password: string;
+  error: string;
 }
 
 interface LoginCardProps {
-  onConfirm?: (username: string, password: string) => void;
+  onConfirm: (username: string, password: string) => Promise<void>;
 }
 
 class LoginCard extends React.Component<LoginCardProps, State> {
   constructor(props: LoginCardProps) {
-    super(props)
+    super(props);
     this.state = {
-      email: '',
-      password: ''
-    }
+      name: '',
+      password: '',
+      error: ''
+    };
   }
 
-  updatePassword(evt: React.ChangeEvent<HTMLInputElement>) {
+  updatePassword = (evt: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      email: this.state.email,
       password: evt.target.value
-    })
-  }
+    });
+  };
 
-  updateEmail(evt: React.ChangeEvent<HTMLInputElement>) {
+  updateEmail = (evt: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      email: evt.target.value,
-      password: this.state.password
-    })
-  }
+      name: evt.target.value
+    });
+  };
 
-  clickConfirm(username: string, password: string) {
-    if (this.props.onConfirm != null)
-      this.props.onConfirm(username, password)
-  }
+  submitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      await this.props.onConfirm(this.state.name, this.state.password);
+    } catch (e) {
+      this.setState({ error: 'Invalid email or password.' });
+    }
+  };
 
   render() {
     return (
       <Card>
-        <Innercard>
+        <InnerCard onSubmit={this.submitLogin}>
           <CenteringContainer>
             <img src={logo} width="50" height="50" alt="Logo" />
             <H1>CoVoD</H1>
           </CenteringContainer>
 
           <Flex>
-            <Label>Email</Label>
-            <BigInput value={this.state.email} type="email" onChange={evt => this.updateEmail(evt)} />
+            <Label htmlFor="name">Username</Label>
+            <BigInput
+              id="name"
+              value={this.state.name}
+              type="name"
+              onChange={evt => this.updateEmail(evt)}
+            />
           </Flex>
           <Flex>
-            <Label>Password</Label>
-            <BigInput value={this.state.password} type="password" onChange={evt => this.updatePassword(evt)} />
+            <Label htmlFor="password">Password</Label>
+            <BigInput
+              id="password"
+              value={this.state.password}
+              type="password"
+              onChange={evt => this.updatePassword(evt)}
+            />
           </Flex>
 
-          <CenteringContainer>
-            <Button onClick={() => this.clickConfirm(this.state.email, this.state.password)}>Sign in!</Button>
-          </CenteringContainer>
-        </Innercard>
+          <SpaceBetween>
+            <ErrorMessage>{this.state.error}</ErrorMessage>
+            <Button type="submit">Sign in</Button>
+          </SpaceBetween>
+        </InnerCard>
       </Card>
     );
-  };
+  }
 }
-
-
 
 export default LoginCard;
