@@ -29,6 +29,7 @@ export default Comments;
 
 const CommentsContainer = styled.div`
   float: bottom;
+  overflow-y: auto
 `;
 
 const CommentContainer = styled.div`

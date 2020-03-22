@@ -18,6 +18,7 @@ interface LectureScreenProps {
 const RowFlex = styled.div`
 display: flex;
 direction: row;
+justify-content:center;
 `
 
 const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
@@ -29,8 +30,8 @@ const LectureScreen: React.FC<LectureScreenProps> = ({ lectureId }) => {
       <Container>
         <Topbar location="Lecture" user={username} />
         <RowFlex>
-            <SmartVideoViewer videoId={lectureId} />
-          <BlueCard style={{ overflowY: "auto", height: "100%", minWidth:"300px"}}>
+          <SmartVideoViewer videoId={lectureId} />
+          <BlueCard style={{ minWidth: "300px" }}>
             <Comments comments={x} />
           </BlueCard>
         </RowFlex>
