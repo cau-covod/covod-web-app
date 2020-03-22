@@ -25,7 +25,7 @@ const Comments: React.FC<CommentsProps> = props => {
           <LightBlueCard>
             <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
               <AuthorName>{commie.authorName}</AuthorName>
-              <Timestamp>{new Date(commie.timestamp).toLocaleDateString()}</Timestamp>
+              <Timestamp>{commie.timestamp}</Timestamp>
             </div>
           <Content>{commie.content}</Content>
           </LightBlueCard>
@@ -72,8 +72,6 @@ const Content = styled.p`
 `;
 
 const Timestamp = styled.p`
-  /* position: absolute; */
-  /* right: 20px; */
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
