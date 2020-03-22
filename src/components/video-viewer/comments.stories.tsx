@@ -10,5 +10,5 @@ export default {
 
 const x = buildList(commentBuilder);
 export const Default = () => {
-  return <Comments comments={x} />;
+  return <Comments comments={x}/>;
 };

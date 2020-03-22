@@ -6,12 +6,13 @@ import { getTimeString } from '../../utils/sec-to-min';
 
 interface CommentsProps {
   comments: Comment[];
+  isTopLevel?: boolean;
 }
 
 const ScrollingCommentSection: React.FC<CommentsProps> = props => {
   return (
     <AllContainer>
-      <Comments comments={props.comments} />
+      <Comments comments={props.comments} isTopLevel={true} />
     </AllContainer>
   );
 };
@@ -32,12 +33,14 @@ const Comments: React.FC<CommentsProps> = props => {
               }}
             >
               <AuthorName>{commie.user.full_name}</AuthorName>
+            {props.isTopLevel&&
               <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
+              }
             </div>
             <Content>{commie.text}</Content>
           </LightBlueCard>
           <ReplyContainer>
-            {<Comments comments={commie.replies}></Comments>}
+            {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
           </ReplyContainer>
         </CommentContainer>
       ))}
