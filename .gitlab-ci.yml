@@ -13,12 +13,7 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --pull \
-      -t $TEST_IMAGE \
-      --build-arg REACT_APP_API_BASE_URL=$API_BASE_URL \
-      --build-arg REACT_APP_CLIENT_ID=$CLIENT_ID \
-      --build-arg REACT_APP_CLIENT_SECRET=$CLIENT_SECRET \
-      .
+    - docker build --pull -t $TEST_IMAGE --build-arg REACT_APP_API_BASE_URL=$API_BASE_URL --build-arg REACT_APP_CLIENT_ID=$CLIENT_ID --build-arg REACT_APP_CLIENT_SECRET=$CLIENT_SECRET .
     - docker push $TEST_IMAGE
 
 # Testing pipeline goes here
