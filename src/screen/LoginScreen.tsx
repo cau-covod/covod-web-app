@@ -13,7 +13,7 @@ justify-content: center;
 align-items:center;
 `
 
-const Flex = styled.div`
+  const Flex = styled.div`
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -21,9 +21,8 @@ const Flex = styled.div`
 
   return (
     <CenterFlex>
-      <div style={{height: "200px" }}/>
-      <div style={{ width: "60%", height: "60%" }}>
-        <LoginCard onConfirm={(username:string, password:string) => login(username, password)} />
+      <div style={{ width: "60%", maxWidth: "650px", height: "60%" }}>
+        <LoginCard onConfirm={(username: string, password: string) => login(username, password)} />
       </div>
     </CenterFlex>
   )
