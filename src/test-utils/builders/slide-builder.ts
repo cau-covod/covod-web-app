@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { Builder, id } from './common';
-import { Slide } from '../../types/slide';
+import { Slide } from '../../typings/slide';
 
 export const buildSlide: Builder<Slide> = overrides => ({
   id: id(),

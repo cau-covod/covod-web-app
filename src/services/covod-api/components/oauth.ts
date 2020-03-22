@@ -1,4 +1,4 @@
-import ApiComponent from './abstract-api-component';
+import ApiComponent from '../abstract-api-component';
 
 interface TokenInfo {
   access_token: string;

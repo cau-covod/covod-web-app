@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import VideoPlayer from './video-player';
 import SlideShow from './slide-show';
-import { Slide } from '../../types/slide';
+import { Slide } from '../../typings/slide';
 import styled from 'styled-components';
 
 interface VideoViewerProps {

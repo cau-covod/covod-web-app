@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Slide } from '../../types/slide';
+import { Slide } from '../../typings/slide';
 
 function getTimeString(timestamp: number) {
   const min = Math.floor(timestamp / 60);
