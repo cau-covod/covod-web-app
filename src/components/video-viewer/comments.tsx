@@ -23,18 +23,19 @@ const Comments: React.FC<CommentsProps> = props => {
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
           <LightBlueCard>
-            <AuthorName>{commie.authorName}</AuthorName>
-            <Content>{commie.content}</Content>
-            <Timestamp>
-              {new Date(commie.timestamp).toLocaleDateString()}
-            </Timestamp>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+              <AuthorName>{commie.authorName}</AuthorName>
+              <Timestamp>{new Date(commie.timestamp).toLocaleDateString()}</Timestamp>
+            </div>
+          <Content>{commie.content}</Content>
           </LightBlueCard>
-          <ReplyContainer>
-            {<Comments comments={commie.replies}></Comments>}
-          </ReplyContainer>
+        <ReplyContainer>
+          {<Comments comments={commie.replies}></Comments>}
+        </ReplyContainer>
         </CommentContainer>
-      ))}
-    </CommentsContainer>
+  ))
+}
+    </CommentsContainer >
   );
 };
 
@@ -71,8 +72,8 @@ const Content = styled.p`
 `;
 
 const Timestamp = styled.p`
-  position: absolute;
-  right: 20px;
+  /* position: absolute; */
+  /* right: 20px; */
   font-family: 'Roboto';
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary[900]};
