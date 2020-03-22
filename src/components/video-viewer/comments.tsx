@@ -31,10 +31,10 @@ const Comments: React.FC<CommentsProps> = props => {
                 justifyContent: 'space-between'
               }}
             >
-              <AuthorName>{commie.authorName}</AuthorName>
+              <AuthorName>{commie.user.full_name}</AuthorName>
               <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
             </div>
-            <Content>{commie.content}</Content>
+            <Content>{commie.text}</Content>
           </LightBlueCard>
           <ReplyContainer>
             {<Comments comments={commie.replies}></Comments>}
