@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { Builder, id } from './common';
-import { Comment } from '../../types/comment';
+import { Comment } from '../../typings/comment';
 import { buildList } from '../../test-utils/builders/list-builder';
 
 export const commentBuilder: Builder<Comment> = overrides => ({

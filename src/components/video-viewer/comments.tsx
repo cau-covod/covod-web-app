@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from '../general/card';
-import { Comment } from '../../types/comment';
+import { Comment } from '../../typings/comment';
 
 interface CommentsProps {
   comments: Comment[];
