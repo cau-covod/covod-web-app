@@ -22,7 +22,7 @@ const LoginScreen: React.FC = () => {
 
   return (
     <CenterFlex>
-      <div style={{ width: '60%', height: '60%' }}>
+      <div style={{ width: '60%', maxWidth: "650px", height: '60%' }}>
         <LoginCard
           onConfirm={(username: string, password: string) =>
             login(username, password)
