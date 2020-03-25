@@ -10,6 +10,5 @@ import { lecture } from '../services/covod-api';
  * @param videoId
  */
 export function useVideo(videoId: string): string {
-  // return useMemo(() => lecture.getLectureVideoUrl(videoId), [videoId]);
-  return "https://covod.bre4k3r.de/api/v1/lecture/"+videoId+"/media" //TODO: not hardcode this
+  return useMemo(() => lecture.getLectureVideoUrl(videoId), [videoId]);
 }
