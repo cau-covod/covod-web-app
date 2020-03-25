@@ -5,11 +5,6 @@ import Card from './card';
 import logo from '../../sourceimages/covodLogo.png';
 import { Link } from 'react-router-dom';
 
-const Flex = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 interface TopbarProps {
   location: string;
   logout: () => void;
