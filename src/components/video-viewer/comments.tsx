@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { getTimeString } from '../../utils/sec-to-min';
+
 import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
-import { getTimeString } from '../../utils/sec-to-min';
 import Button, { TransparentButton } from '../general/button'
 
 interface ScrollingCommentsProps {
@@ -26,7 +28,12 @@ interface CommentCardProps {
   setTimeStamp: (newTimeStamp: number) => void;
 }
 
+
+const SmolButtonStyle = { padding: "4px 8px", fontSize: "16px" };
+
 const CommentCard: React.FC<CommentCardProps> = props => {
+  const [replyState, setReplyState] = useState<boolean>()
+
   return (
     <LightBlueCard>
       <div
@@ -48,7 +55,17 @@ const CommentCard: React.FC<CommentCardProps> = props => {
       </div>
       <Content>{props.commie.text}</Content>
       <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-        <Button onClick={() => alert("I'm not implemented yet :/")} style={{ padding: "4px 8px", fontSize: "16px" }}>↵</Button>
+        {!replyState &&
+          <Button onClick={() => setReplyState(true)} style={SmolButtonStyle}>↵</Button>
+        }
+        {replyState &&
+          <div>
+            <input/>
+            {/* TODO: Style these Buttons a bit better */}
+            <Button onClick={() => {alert("you just send a message uwu"); setReplyState(false)}} style={SmolButtonStyle}>Send</Button> {/* TODO: refresh comments after sending one */}
+            <Button onClick={()=> setReplyState(false)} style={SmolButtonStyle}>Abort</Button>
+          </div>
+        }
       </div>
     </LightBlueCard>
   )
