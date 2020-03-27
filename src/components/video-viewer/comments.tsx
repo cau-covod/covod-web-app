@@ -5,13 +5,12 @@ import { Comment } from '../../typings/comment';
 import { getTimeString } from '../../utils/sec-to-min';
 import Button, { TransparentButton } from '../general/button'
 
-interface CommentsProps {
+interface ScrollingCommentsProps {
   comments: Comment[];
-  isTopLevel?: boolean;
   setTimeStamp: (newTimeStamp: number) => void;
 }
 
-const ScrollingCommentSection: React.FC<CommentsProps> = props => {
+const ScrollingCommentSection: React.FC<ScrollingCommentsProps> = props => {
   return (
     <AllContainer>
       <Comments comments={props.comments} isTopLevel={true} setTimeStamp={props.setTimeStamp} />
@@ -21,34 +20,52 @@ const ScrollingCommentSection: React.FC<CommentsProps> = props => {
 
 export default ScrollingCommentSection;
 
+interface CommentCardProps {
+  commie: Comment;
+  isTopLevel?: boolean;
+  setTimeStamp: (newTimeStamp: number) => void;
+}
+
+const CommentCard: React.FC<CommentCardProps> = props => {
+  return (
+    <LightBlueCard>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}
+      >
+        <AuthorName>{props.commie.user.full_name}</AuthorName>
+        {props.isTopLevel &&
+          <TransparentButton
+            key={props.commie.id}
+            onClick={() => props.setTimeStamp(props.commie.timestamp)}
+            title={'Jump to ' + getTimeString(props.commie.timestamp)}>
+            <Timestamp>{getTimeString(props.commie.timestamp)}</Timestamp>
+          </TransparentButton>
+        }
+      </div>
+      <Content>{props.commie.text}</Content>
+      <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+        <Button onClick={() => alert("I'm not implemented yet :/")} style={{ padding: "4px 8px", fontSize: "16px" }}>↵</Button>
+      </div>
+    </LightBlueCard>
+  )
+}
+
+interface CommentsProps {
+  comments: Comment[];
+  isTopLevel?: boolean;
+  setTimeStamp: (newTimeStamp: number) => void;
+}
+
 const Comments: React.FC<CommentsProps> = props => {
   return (
     <CommentsContainer>
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
-          <LightBlueCard>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-              }}
-            >
-              <AuthorName>{commie.user.full_name}</AuthorName>
-              {props.isTopLevel &&
-                <TransparentButton
-                  key={commie.id}
-                  onClick={() => props.setTimeStamp(commie.timestamp)}
-                  title={'Jump to ' + getTimeString(commie.timestamp)}>
-                  <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
-                </TransparentButton>
-              }
-            </div>
-            <Content>{commie.text}</Content>
-            <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-              <Button onClick={() => alert("I'm not implemented yet :/")} style={{ padding: "4px 8px", fontSize: "16px" }}>↵</Button>
-            </div>
-          </LightBlueCard>
+          <CommentCard isTopLevel={props.isTopLevel} commie={commie} setTimeStamp={props.setTimeStamp} />
           <ReplyContainer>
             {<Comments comments={commie.replies} isTopLevel={false} setTimeStamp={props.setTimeStamp} />}
           </ReplyContainer>
