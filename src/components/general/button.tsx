@@ -17,4 +17,12 @@ const Button = styled.button`
   }
 `;
 
+export const TransparentButton = styled.button`
+border: none;
+padding: 0;
+background: transparent;
+box-shadow: none;
+cursor: pointer;
+`;
+
 export default Button;

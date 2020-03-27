@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Slide } from '../../typings/slide';
 import { getTimeString } from '../../utils/sec-to-min';
+import {TransparentButton} from '../general/button'
 
 interface SlideShowProps {
   slides: Slide[];
@@ -37,14 +38,6 @@ const SlideContainer = styled.div`
   & > :last-child {
     margin-right: 0;
   }
-`;
-
-const TransparentButton = styled.button`
-  border: none;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  cursor: pointer;
 `;
 
 const SlideImage = styled.img`

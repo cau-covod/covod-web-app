@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 import { getTimeString } from '../../utils/sec-to-min';
-import Button from '../general/button'
+import Button, { TransparentButton } from '../general/button'
 
 interface CommentsProps {
   comments: Comment[];
@@ -35,7 +35,12 @@ const Comments: React.FC<CommentsProps> = props => {
             >
               <AuthorName>{commie.user.full_name}</AuthorName>
               {props.isTopLevel &&
-                <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
+                <TransparentButton
+                  key={commie.id}
+                  onClick={() => alert("implement me please uwu")}
+                  title={'Jump to ' + getTimeString(commie.timestamp)}>
+                  <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
+                </TransparentButton>
               }
             </div>
             <Content>{commie.text}</Content>
