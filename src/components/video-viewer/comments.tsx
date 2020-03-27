@@ -8,12 +8,13 @@ import Button, { TransparentButton } from '../general/button'
 interface CommentsProps {
   comments: Comment[];
   isTopLevel?: boolean;
+  setTimeStamp: (newTimeStamp: number) => void;
 }
 
 const ScrollingCommentSection: React.FC<CommentsProps> = props => {
   return (
     <AllContainer>
-      <Comments comments={props.comments} isTopLevel={true} />
+      <Comments comments={props.comments} isTopLevel={true} setTimeStamp={props.setTimeStamp} />
     </AllContainer>
   );
 };
@@ -37,7 +38,7 @@ const Comments: React.FC<CommentsProps> = props => {
               {props.isTopLevel &&
                 <TransparentButton
                   key={commie.id}
-                  onClick={() => alert("implement me please uwu")}
+                  onClick={() => props.setTimeStamp(commie.timestamp)}
                   title={'Jump to ' + getTimeString(commie.timestamp)}>
                   <Timestamp>{getTimeString(commie.timestamp)}</Timestamp>
                 </TransparentButton>
@@ -49,7 +50,7 @@ const Comments: React.FC<CommentsProps> = props => {
             </div>
           </LightBlueCard>
           <ReplyContainer>
-            {<Comments comments={commie.replies} isTopLevel={false}></Comments>}
+            {<Comments comments={commie.replies} isTopLevel={false} setTimeStamp={props.setTimeStamp} />}
           </ReplyContainer>
         </CommentContainer>
       ))

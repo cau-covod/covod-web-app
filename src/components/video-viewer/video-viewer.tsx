@@ -9,7 +9,7 @@ interface VideoViewerProps {
   videoUrl: string;
   slides: Slide[];
   timeStamp:number;
-  setTimeStamp:(newTimeStamp:number) => void;  
+  setTimeStamp:(newTimeStamp:number) => void;
 }
 
 const VideoViewer: React.FC<VideoViewerProps> = props => {

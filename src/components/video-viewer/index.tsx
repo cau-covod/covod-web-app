@@ -27,7 +27,7 @@ const SmartVideoViewer: React.FC<SmartVideoViewerProps> = props => {
         <VideoViewer slides={slides} videoUrl={vidUrl} timeStamp={timestamp} setTimeStamp={setTimeStamp} />
       </div>
       <Card style={{ minWidth: '300px' }}>
-        <ScrollingCommentSection comments={comments} />
+        <ScrollingCommentSection comments={comments} setTimeStamp={setTimeStamp}/>
       </Card>
     </RowFlex>
   )
