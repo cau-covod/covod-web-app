@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import VideoPlayer from './video-player';
 import SlideShow from './slide-show';
 import { Slide } from '../../typings/slide';
@@ -8,18 +8,19 @@ import { BlueCard } from '../general/card';
 interface VideoViewerProps {
   videoUrl: string;
   slides: Slide[];
+  timeStamp:number;
+  setTimeStamp:(newTimeStamp:number) => void;  
 }
 
 const VideoViewer: React.FC<VideoViewerProps> = props => {
-  const [timestamp, setTimestamp] = useState(0);
 
   return (
     <Container>
       <Content>
         <BlueCard>
-          <VideoPlayer sourceUrl={props.videoUrl} timestamp={timestamp} />
+          <VideoPlayer sourceUrl={props.videoUrl} timestamp={props.timeStamp} />
           <div style={{ height: '8px' }} />
-          <SlideShow slides={props.slides} onSlideSelect={setTimestamp} />
+          <SlideShow slides={props.slides} onSlideSelect={props.setTimeStamp} />
         </BlueCard>
       </Content>
     </Container>

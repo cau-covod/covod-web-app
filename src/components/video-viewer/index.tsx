@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import { useSlides } from '../../provider/slide-provider';
@@ -19,10 +19,12 @@ const SmartVideoViewer: React.FC<SmartVideoViewerProps> = props => {
   const vidUrl = useVideo(props.videoId);
   const comments = useLectureComments(props.videoId);
 
+  const [timestamp, setTimeStamp] = useState(0);
+
   return (
     <RowFlex>
       <div style={{ height: '100%' }}>
-        <VideoViewer slides={slides} videoUrl={vidUrl} />
+        <VideoViewer slides={slides} videoUrl={vidUrl} timeStamp={timestamp} setTimeStamp={setTimeStamp} />
       </div>
       <Card style={{ minWidth: '300px' }}>
         <ScrollingCommentSection comments={comments} />
