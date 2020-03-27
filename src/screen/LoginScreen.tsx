@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Background from '../components/general/background'
 
 const LoginScreen: React.FC = () => {
-  const { login } = useAuth();
+  const { login } = useAuth(); //importing the function login from the bundle useAuth?
 
   const CenterFlex = styled.div`
     height: 100vh;

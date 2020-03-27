@@ -63,9 +63,12 @@ const AuthenticationProvider: React.FC = ({ children }) => {
   const [username, setUsername] = React.useState<string>('');
 
   async function login(username: string, password: string): Promise<void> {
+    // get a token from the api
     const tokenInfo = await oauth.getToken(username, password);
 
+    // load the relevant access token into config..
     config.token = tokenInfo.access_token;
+    //.. and the whole token into local storage
     setToken(tokenInfo);
     setUsername(username);
   }
