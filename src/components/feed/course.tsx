@@ -29,7 +29,6 @@ export default Course;
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  border-radius: 4px;
   box-shadow: ${({ theme }) => theme.shadows[100]};
   padding: 8px;
 `;

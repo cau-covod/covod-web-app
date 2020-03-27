@@ -59,25 +59,23 @@ const Title = styled.h1`
   font-size: 32px;
   font-weight: 700;
   margin: auto 0;
-  color: ${({ theme }) => theme.colors.grays[900]};
+  color: ${({ theme }) => theme.colors.grays[50]};
 `;
 
 const Button = styled.button`
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 4px;
   border: none;
   padding: 8px 16px;
-  color: ${({ theme }) => theme.colors.primary[500]};
-  background: transparent;
-  transition: all 200ms ease-in-out;
+  color: ${({ theme }) => theme.colors.grays[50]};
+  background: ${({ theme }) => theme.colors.primary[500]};
+  transition: all 60ms ease-in-out;
   height: fit-content;
   margin: auto 0;
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary[700]};
-    background: ${({ theme }) => theme.colors.secondary[300]};
+    background: ${({ theme }) => theme.colors.secondary[700]};
   }
 `;

@@ -11,15 +11,15 @@ const defaultTheme: DefaultTheme = {
   },
   colors: {
     primary: {
-      300: '#62B0E8',
-      500: '#2680C2',
-      700: '#0F609B',
-      900: '#102A43'
+      300: '#9e9e9e',
+      500: '#626262',
+      700: '#3b3b3b',
+      900: '#222222'
     },
     secondary: {
-      300: '#9FB3C8',
-      500: '#627D98',
-      700: '#334E68',
+      300: '#cccccc',
+      500: '#9e9e9e',
+      700: '#515151'
     },
     // Grays taken from Refactoring UI Color Swatch
     grays: {
@@ -36,7 +36,7 @@ const defaultTheme: DefaultTheme = {
     },
     white: '#fff',
     black: '#000',
-    appBackground: '#ededed'
+    appBackground: '#3b3b3b'
   },
   fontFamily: "'Roboto', sans-serif",
   // Sized taken from Refactoring UI Page 91

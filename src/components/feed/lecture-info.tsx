@@ -38,7 +38,6 @@ const Container = styled(Link)`
   color: inherit;
   text-decoration: none;
   padding: 8px;
-  border-radius: 4px;
   width: 50%;
   max-width: 500px;
 
