@@ -22,7 +22,10 @@ export function useCourses() {
   const [data, setData] = useState<Course[]>([]);
 
   useEffect(() => {
-    courses.getAllCourses().then(res => setData(sortLectures(res)));
+    courses
+      .getAllCourses()
+      .then(res => setData(sortLectures(res)))
+      .catch(e => console.log(`Could not fetch courses: ${e}`));
   }, []);
 
   return data;
@@ -32,7 +35,10 @@ export function useLectureComments(id: string) {
   const [data, setData] = useState<Comment[]>([]);
 
   useEffect(() => {
-    lecture.getAllCommentsForLecture(id).then(res => setData(res));
+    lecture
+      .getAllCommentsForLecture(id)
+      .then(res => setData(res))
+      .catch(e => console.log(`Could not fetch lecture comments: ${e}`));
   }, [id]);
 
   return data;
