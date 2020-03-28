@@ -1,5 +1,5 @@
 import ApiComponent from '../abstract-api-component';
-import { Comment, CommentSend } from '../../../typings/comment';
+import { Comment, ClientGeneratedComment } from '../../../typings/comment';
 
 type CommentWrap = { comments: Comment[] };
 
@@ -19,7 +19,7 @@ export class Lecture extends ApiComponent {
     return res.data.comments;
   }
 
-  async sendComment(lectureId: string, comment: CommentSend): Promise<Comment[]> {
+  async sendComment(lectureId: string, comment: ClientGeneratedComment): Promise<Comment[]> {
     const res = await this.api.put<CommentWrap>(
       `/api/v1/lecture/${lectureId}/comments`, comment
     );

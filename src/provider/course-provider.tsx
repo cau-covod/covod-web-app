@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Course } from '../typings/lecture';
 import { courses, lecture } from '../services/covod-api';
-import { Comment, CommentSend } from '../typings/comment';
+import { Comment, ClientGeneratedComment } from '../typings/comment';
 
 // Let's keep this hook in the provider layer. This way we can cache the data
-// a global state without having to touch any components.
+// in a global state without having to touch any components.
 // The hooks act as a fassade.
 
 function sortLectures(courses: Course[]) {
@@ -38,6 +38,6 @@ export function useLectureComments(id: string) {
   return data;
 }
 
-export function writeComment(lectureId: string, comment: CommentSend) {
-
+export function sendComment(lectureId: string, comment: ClientGeneratedComment): void {
+  lecture.sendComment(lectureId, comment).catch(() => { throw new Error('sendComment was not ok.') })
 }

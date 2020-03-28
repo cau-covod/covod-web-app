@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { ClientGeneratedComment } from '../../typings/comment'
 import { useSlides } from '../../provider/slide-provider';
 import { useVideo } from '../../provider/video-provider';
-import { useLectureComments } from '../../provider/course-provider';
+import { useLectureComments, sendComment } from '../../provider/course-provider';
 
 import Card from '../general/card'
 import VideoViewer from './video-viewer';
@@ -24,10 +25,16 @@ const SmartVideoViewer: React.FC<SmartVideoViewerProps> = props => {
   return (
     <RowFlex>
       <div style={{ height: '100%' }}>
-        <VideoViewer slides={slides} videoUrl={vidUrl} timeStamp={timestamp} setTimeStamp={setTimeStamp} />
+        <VideoViewer slides={slides}
+          videoUrl={vidUrl}
+          timeStamp={timestamp}
+          setTimeStamp={setTimeStamp} />
       </div>
       <Card style={{ minWidth: '300px' }}>
-        <ScrollingCommentSection comments={comments} setTimeStamp={setTimeStamp}/>
+        <ScrollingCommentSection
+          comments={comments}
+          setTimeStamp={setTimeStamp}
+          sendComment={(comment: ClientGeneratedComment) => sendComment(props.videoId, comment)} />
       </Card>
     </RowFlex>
   )

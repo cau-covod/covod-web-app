@@ -10,5 +10,5 @@ export default {
 
 const x = buildList(commentBuilder);
 export const Default = () => {
-  return <Comments comments={x} setTimeStamp={(n:number)=>alert("OwO I just called setTimeStamp to " + n)}/>;
+  return <Comments comments={x} setTimeStamp={(n: number) => alert("OwO I just called setTimeStamp to " + n)} sendComment={(comment) => alert("ok zoomer")} />;
 };

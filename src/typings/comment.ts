@@ -14,7 +14,7 @@ export interface Comment {
 }
 
 
-export interface CommentSend {
+export interface ClientGeneratedComment {
   text: string;
   timestamp?: number;
   parentId?: string;

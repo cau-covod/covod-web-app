@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { getTimeString } from '../../utils/sec-to-min';
+import { Comment, ClientGeneratedComment } from '../../typings/comment';
 
 import Card, { LightBlueCard } from '../general/card';
-import { Comment } from '../../typings/comment';
 import Button, { TransparentButton } from '../general/button'
 import BigInput from '../general/bigInput'
 
 interface ScrollingCommentsProps {
   comments: Comment[];
   setTimeStamp: (newTimeStamp: number) => void;
+  sendComment: (comment: ClientGeneratedComment) => void;
 }
 
 const ScrollingCommentSection: React.FC<ScrollingCommentsProps> = props => {
@@ -40,6 +41,7 @@ justify-content:space-around
 
 const CommentCard: React.FC<CommentCardProps> = props => {
   const [replyState, setReplyState] = useState<boolean>()
+  const [text, setText] = useState<string>()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -71,10 +73,10 @@ const CommentCard: React.FC<CommentCardProps> = props => {
       {replyState &&
         <AnswerContainer>
 
-          <BigInput />
+          <BigInput onChange={evt => setText(evt.target.value)} />
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '4px 0px' }}>
             <NegativeButton onClick={() => setReplyState(false)}>Abort</NegativeButton>
-            <PositiveButton onClick={() => { alert("you just send a message uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
+            <PositiveButton onClick={() => { alert("you just send the message '" + text + "' uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
           </div>
         </AnswerContainer>
       }
