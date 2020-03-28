@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import { getTimeString } from '../../utils/sec-to-min';
 
-import { LightBlueCard } from '../general/card';
+import Card, { LightBlueCard } from '../general/card';
 import { Comment } from '../../typings/comment';
 import Button, { TransparentButton } from '../general/button'
+import BigInput from '../general/bigInput'
 
 interface ScrollingCommentsProps {
   comments: Comment[];
@@ -28,8 +29,14 @@ interface CommentCardProps {
   setTimeStamp: (newTimeStamp: number) => void;
 }
 
-
-const SmolButtonStyle = { padding: "4px 8px", fontSize: "16px" };
+const AnswerContainer = styled(Card)`
+display: flex;
+flex-direction: column;
+margin:10px;
+width: 100%;
+background-color:${({ theme }) => theme.colors.primary[500]};
+justify-content:space-around
+`
 
 const CommentCard: React.FC<CommentCardProps> = props => {
   const [replyState, setReplyState] = useState<boolean>()
@@ -56,15 +63,17 @@ const CommentCard: React.FC<CommentCardProps> = props => {
       <Content>{props.commie.text}</Content>
       <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
         {!replyState &&
-          <Button onClick={() => setReplyState(true)} style={SmolButtonStyle}>↵</Button>
+          <Button onClick={() => setReplyState(true)}>↵</Button>
         }
         {replyState &&
-          <div>
-            <input/>
-            {/* TODO: Style these Buttons a bit better */}
-            <Button onClick={() => {alert("you just send a message uwu"); setReplyState(false)}} style={SmolButtonStyle}>Send</Button> {/* TODO: refresh comments after sending one */}
-            <Button onClick={()=> setReplyState(false)} style={SmolButtonStyle}>Abort</Button>
-          </div>
+          <AnswerContainer>
+
+            <BigInput />
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding:'4px 0px'}}>
+              <NegativeButton onClick={() => setReplyState(false)}>Abort</NegativeButton>
+              <PositiveButton onClick={() => { alert("you just send a message uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
+            </div>
+          </AnswerContainer>
         }
       </div>
     </LightBlueCard>
@@ -92,6 +101,15 @@ const Comments: React.FC<CommentsProps> = props => {
     </CommentsContainer >
   );
 };
+
+const SmolButton = styled(Button)`
+padding: 4px 8px;
+font-size: 16px;
+`
+
+const PositiveButton = styled(SmolButton)`background-color:green`
+
+const NegativeButton = styled(SmolButton)`background-color:red`
 
 const AllContainer = styled.div`
   overflow-y: scroll;
