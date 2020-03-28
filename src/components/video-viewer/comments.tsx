@@ -109,9 +109,19 @@ padding: 4px 8px;
 font-size: 16px;
 `
 
-const PositiveButton = styled(SmolButton)`background-color:green`
+const PositiveButton = styled(SmolButton)`
+  background:green;
+  &:hover {
+      background: darkgreen;
+    }
+`;
 
-const NegativeButton = styled(SmolButton)`background-color:red`
+const NegativeButton = styled(SmolButton)`
+  background:red;
+  &:hover {
+      background: darkred;
+    }
+`;
 
 const AllContainer = styled.div`
   overflow-y: scroll;
