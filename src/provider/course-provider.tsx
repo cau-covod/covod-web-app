@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Course } from '../typings/lecture';
 import { courses, lecture } from '../services/covod-api';
-import { Comment } from '../typings/comment';
+import { Comment, CommentSend } from '../typings/comment';
 
 // Let's keep this hook in the provider layer. This way we can cache the data
 // a global state without having to touch any components.
@@ -36,4 +36,8 @@ export function useLectureComments(id: string) {
   }, [id]);
 
   return data;
+}
+
+export function writeComment(lectureId: string, comment: CommentSend) {
+
 }

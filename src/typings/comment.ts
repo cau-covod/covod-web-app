@@ -12,3 +12,10 @@ export interface Comment {
   path: string;
   replies: Comment[];
 }
+
+
+export interface CommentSend {
+  text: string;
+  timestamp?: number;
+  parentId?: string;
+}
