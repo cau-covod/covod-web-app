@@ -42,41 +42,43 @@ const CommentCard: React.FC<CommentCardProps> = props => {
   const [replyState, setReplyState] = useState<boolean>()
 
   return (
-    <LightBlueCard>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}
-      >
-        <AuthorName>{props.commie.user.full_name}</AuthorName>
-        {props.isTopLevel &&
-          <TransparentButton
-            key={props.commie.id}
-            onClick={() => props.setTimeStamp(props.commie.timestamp)}
-            title={'Jump to ' + getTimeString(props.commie.timestamp)}>
-            <Timestamp>{getTimeString(props.commie.timestamp)}</Timestamp>
-          </TransparentButton>
-        }
-      </div>
-      <Content>{props.commie.text}</Content>
-      <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-        {!replyState &&
-          <Button onClick={() => setReplyState(true)}>↵</Button>
-        }
-        {replyState &&
-          <AnswerContainer>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <LightBlueCard>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          }}
+        >
+          <AuthorName>{props.commie.user.full_name}</AuthorName>
+          {props.isTopLevel &&
+            <TransparentButton
+              key={props.commie.id}
+              onClick={() => props.setTimeStamp(props.commie.timestamp)}
+              title={'Jump to ' + getTimeString(props.commie.timestamp)}>
+              <Timestamp>{getTimeString(props.commie.timestamp)}</Timestamp>
+            </TransparentButton>
+          }
+        </div>
+        <Content>{props.commie.text}</Content>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          {!replyState &&
+            <Button onClick={() => setReplyState(true)}>↵</Button>
+          }
+        </div>
+      </LightBlueCard>
+      {replyState &&
+        <AnswerContainer>
 
-            <BigInput />
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding:'4px 0px'}}>
-              <NegativeButton onClick={() => setReplyState(false)}>Abort</NegativeButton>
-              <PositiveButton onClick={() => { alert("you just send a message uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
-            </div>
-          </AnswerContainer>
-        }
-      </div>
-    </LightBlueCard>
+          <BigInput />
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '4px 0px' }}>
+            <NegativeButton onClick={() => setReplyState(false)}>Abort</NegativeButton>
+            <PositiveButton onClick={() => { alert("you just send a message uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
+          </div>
+        </AnswerContainer>
+      }
+    </div>
   )
 }
 
