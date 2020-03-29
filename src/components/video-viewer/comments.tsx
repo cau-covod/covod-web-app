@@ -16,9 +16,29 @@ interface ScrollingCommentsProps {
 }
 
 const ScrollingCommentSection: React.FC<ScrollingCommentsProps> = props => {
+  const [inputText, setInputText] = useState<string>()
   return (
     <AllContainer>
-      <Comments comments={props.comments} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />
+      <Comments comments={props.comments} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} sendComment={props.sendComment} />
+      <AnswerContainer>
+        Send your comment! {/* TODO: style, obviously :/ */}
+        <BigInput onChange={evt => setInputText(evt.target.value)} />
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '4px 0px' }}>
+          <PositiveButton onClick={() => {
+            if (inputText === undefined || inputText === "") return;
+
+            const generatedComment: ClientGeneratedComment = {
+              text: inputText,
+              timestamp: props.timeStamp
+              // answers written here are top-level and thus don't have a parent
+            };
+
+            console.log(generatedComment)
+
+            // props.sendComment(generatedComment);
+          }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
+        </div>
+      </AnswerContainer>
     </AllContainer>
   );
 };
@@ -38,11 +58,12 @@ interface CommentCardProps {
   parentId?: number;
   timeStamp: number;
   setTimeStamp: (newTimeStamp: number) => void;
+  sendComment: (comment: ClientGeneratedComment) => void;
 }
 
 const CommentCard: React.FC<CommentCardProps> = props => {
   const [replyState, setReplyState] = useState<boolean>()
-  const [text, setText] = useState<string>()
+  const [inputText, setInputText] = useState<string>()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -73,10 +94,23 @@ const CommentCard: React.FC<CommentCardProps> = props => {
       </LightBlueCard>
       {replyState &&
         <AnswerContainer>
-          <BigInput onChange={evt => setText(evt.target.value)} />
+          <BigInput onChange={evt => setInputText(evt.target.value)} />
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '4px 0px' }}>
             <NegativeButton onClick={() => setReplyState(false)}>Dismiss</NegativeButton>
-            <PositiveButton onClick={() => { alert("you just send the message '" + text + "' uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
+            <PositiveButton onClick={() => {
+              if (inputText === undefined || inputText === "") return;
+
+              const generatedComment: ClientGeneratedComment = {
+                text: inputText,
+                parent: props.parentId,
+                // answers to this comment are 2nd-level or deeper and thus don't have a timestamp
+              };
+
+              generatedComment.parent = props.parentId
+              console.log(generatedComment)
+
+              // props.sendComment(generatedComment);
+            }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
           </div>
         </AnswerContainer>
       }
@@ -89,6 +123,7 @@ interface CommentsProps {
   parentId?: number;
   timeStamp: number;
   setTimeStamp: (newTimeStamp: number) => void;
+  sendComment: (comment: ClientGeneratedComment) => void;
 }
 
 const Comments: React.FC<CommentsProps> = props => {
@@ -96,9 +131,9 @@ const Comments: React.FC<CommentsProps> = props => {
     <CommentsContainer>
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
-          <CommentCard commie={commie} parentId={props.parentId} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />
+          <CommentCard commie={commie} parentId={props.parentId} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} sendComment={props.sendComment} />
           <ReplyContainer>
-            {<Comments comments={commie.replies} parentId={commie.id} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />}
+            {<Comments comments={commie.replies} parentId={commie.id} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} sendComment={props.sendComment} />}
           </ReplyContainer>
         </CommentContainer>
       ))
