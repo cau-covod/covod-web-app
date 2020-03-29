@@ -33,6 +33,7 @@ const SmartVideoViewer: React.FC<SmartVideoViewerProps> = props => {
       <Card style={{ minWidth: '300px' }}>
         <ScrollingCommentSection
           comments={comments}
+          timeStamp = {timestamp}
           setTimeStamp={setTimeStamp}
           sendComment={(comment: ClientGeneratedComment) => sendComment(props.videoId, comment)} />
       </Card>

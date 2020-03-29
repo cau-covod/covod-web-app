@@ -10,6 +10,7 @@ import BigInput from '../general/bigInput'
 
 interface ScrollingCommentsProps {
   comments: Comment[];
+  timeStamp: number;
   setTimeStamp: (newTimeStamp: number) => void;
   sendComment: (comment: ClientGeneratedComment) => void;
 }
@@ -17,18 +18,12 @@ interface ScrollingCommentsProps {
 const ScrollingCommentSection: React.FC<ScrollingCommentsProps> = props => {
   return (
     <AllContainer>
-      <Comments comments={props.comments} isTopLevel={true} setTimeStamp={props.setTimeStamp} />
+      <Comments comments={props.comments} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />
     </AllContainer>
   );
 };
 
 export default ScrollingCommentSection;
-
-interface CommentCardProps {
-  commie: Comment;
-  isTopLevel?: boolean;
-  setTimeStamp: (newTimeStamp: number) => void;
-}
 
 const AnswerContainer = styled(Card)`
 display: flex;
@@ -38,6 +33,12 @@ width: 100%;
 background-color:${({ theme }) => theme.colors.primary[500]};
 justify-content:space-around
 `
+interface CommentCardProps {
+  commie: Comment;
+  parentId?: number;
+  timeStamp: number;
+  setTimeStamp: (newTimeStamp: number) => void;
+}
 
 const CommentCard: React.FC<CommentCardProps> = props => {
   const [replyState, setReplyState] = useState<boolean>()
@@ -54,7 +55,7 @@ const CommentCard: React.FC<CommentCardProps> = props => {
           }}
         >
           <AuthorName>{props.commie.user.full_name}</AuthorName>
-          {props.isTopLevel &&
+          {props.parentId === undefined &&
             <TransparentButton
               key={props.commie.id}
               onClick={() => props.setTimeStamp(props.commie.timestamp)}
@@ -72,10 +73,9 @@ const CommentCard: React.FC<CommentCardProps> = props => {
       </LightBlueCard>
       {replyState &&
         <AnswerContainer>
-
           <BigInput onChange={evt => setText(evt.target.value)} />
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '4px 0px' }}>
-            <NegativeButton onClick={() => setReplyState(false)}>Abort</NegativeButton>
+            <NegativeButton onClick={() => setReplyState(false)}>Dismiss</NegativeButton>
             <PositiveButton onClick={() => { alert("you just send the message '" + text + "' uwu"); setReplyState(false) }}>Send</PositiveButton> {/* TODO: refresh comments after sending one */}
           </div>
         </AnswerContainer>
@@ -86,7 +86,8 @@ const CommentCard: React.FC<CommentCardProps> = props => {
 
 interface CommentsProps {
   comments: Comment[];
-  isTopLevel?: boolean;
+  parentId?: number;
+  timeStamp: number;
   setTimeStamp: (newTimeStamp: number) => void;
 }
 
@@ -95,9 +96,9 @@ const Comments: React.FC<CommentsProps> = props => {
     <CommentsContainer>
       {props.comments.map(commie => (
         <CommentContainer key={commie.id}>
-          <CommentCard isTopLevel={props.isTopLevel} commie={commie} setTimeStamp={props.setTimeStamp} />
+          <CommentCard commie={commie} parentId={props.parentId} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />
           <ReplyContainer>
-            {<Comments comments={commie.replies} isTopLevel={false} setTimeStamp={props.setTimeStamp} />}
+            {<Comments comments={commie.replies} parentId={commie.id} timeStamp={props.timeStamp} setTimeStamp={props.setTimeStamp} />}
           </ReplyContainer>
         </CommentContainer>
       ))
